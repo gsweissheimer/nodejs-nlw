@@ -1,0 +1,2 @@
+# NLW - Next Level Week
+I am starting this project as part of the NLW (Next Level Week) by Rocketseat with the goal of enhancing my skills in backend development with Node.js. During the event, I'll learn new techniques and best practices. After completing the event, I plan to evolve this project into a personal project, applying the knowledge gained and improving my development capabilities.
