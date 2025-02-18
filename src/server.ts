@@ -10,7 +10,7 @@ import {
 } from "fastify-type-provider-zod";
 
 import { env } from "./env";
-import { subscribeToEventRoute } from "./routes/index";
+import { acessInviteLinkRoute, subscribeToEventRoute } from './routes/index'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -40,6 +40,7 @@ app.get("/ping", () => {
 })
 
 app.register(subscribeToEventRoute);
+app.register(acessInviteLinkRoute)
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("Server is running on port 3000");
