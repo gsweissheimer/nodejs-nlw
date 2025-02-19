@@ -19,7 +19,7 @@ This project includes an interactive Swagger UI for API documentation.
 
 Once the server is running, you can access the complete API documentation at:
 
-👉 http://localhost:3000/docs
+👉 http://localhost:3001/docs
 
 Use this interface to explore the available endpoints, check request/response formats, and test API calls directly. 🚀
 
