@@ -8,6 +8,13 @@
       "when": 1739920340936,
       "tag": "0000_loose_mandroid",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1740329102586,
+      "tag": "0001_jazzy_ravenous",
+      "breakpoints": true
     }
   ]
 }
