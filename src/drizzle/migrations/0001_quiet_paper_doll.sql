@@ -10,25 +10,25 @@ CREATE TABLE "breed" (
 );
 --> statement-breakpoint
 CREATE TABLE "family_tutor" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"family_id" integer NOT NULL,
-	"tutor_id" integer NOT NULL
+	"id" uuid PRIMARY KEY NOT NULL,
+	"family_id" uuid NOT NULL,
+	"tutor_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "family" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
-	"tutor_id" integer NOT NULL,
+	"tutor_id" uuid NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp
 );
 --> statement-breakpoint
 CREATE TABLE "pet" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
 	"type" text NOT NULL,
-	"breed_id" integer,
-	"tutor_id" integer,
+	"breed_id" uuid,
+	"tutor_id" uuid,
 	"birth_date" date,
 	"microchip" boolean DEFAULT false,
 	"is_active" boolean DEFAULT true,
@@ -38,7 +38,7 @@ CREATE TABLE "pet" (
 );
 --> statement-breakpoint
 CREATE TABLE "tutor" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
 	"cpf" text NOT NULL,
 	"email" text NOT NULL,
@@ -49,13 +49,12 @@ CREATE TABLE "tutor" (
 );
 --> statement-breakpoint
 CREATE TABLE "user_record" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY NOT NULL,
 	"username" text NOT NULL,
 	"password" text NOT NULL,
-	"tutor_id" serial NOT NULL,
+	"tutor_id" uuid,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp,
-	CONSTRAINT "user_record_username_unique" UNIQUE("username")
+	"updated_at" timestamp
 );
 --> statement-breakpoint
 ALTER TABLE "family_tutor" ADD CONSTRAINT "family_tutor_family_id_family_id_fk" FOREIGN KEY ("family_id") REFERENCES "public"."family"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint

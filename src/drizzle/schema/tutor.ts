@@ -2,15 +2,15 @@ import {
   boolean,
   pgSchema,
   pgTable,
-  serial,
   text,
   timestamp,
+  uuid,
 } from 'drizzle-orm/pg-core'
 
 export const mySchema = pgSchema('my_schema')
 
 export const tutor = pgTable('tutor', {
-  id: serial('id').primaryKey(),
+  id: uuid('id').primaryKey(),
   name: text('name').notNull(),
   cpf: text('cpf').notNull(),
   email: text('email').notNull().unique(),

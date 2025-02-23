@@ -1,22 +1,21 @@
 import {
   boolean,
   date,
-  integer,
   pgTable,
-  serial,
   text,
   timestamp,
+  uuid,
 } from 'drizzle-orm/pg-core'
 
 import { breed } from './breed'
 import { tutor } from './tutor'
 
 export const pet = pgTable('pet', {
-  id: serial('id').primaryKey(),
+  id: uuid('id').primaryKey(),
   name: text('name').notNull(),
   type: text('type').notNull(),
-  breedId: integer('breed_id').references(() => breed.id),
-  tutorId: integer('tutor_id').references(() => tutor.id),
+  breedId: uuid('breed_id').references(() => breed.id),
+  tutorId: uuid('tutor_id').references(() => tutor.id),
   birthDate: date('birth_date'),
   microchip: boolean('microchip').default(false),
   isActive: boolean('is_active').default(true),
