@@ -1,6 +1,7 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getRanking } from '../functions/';
+import { getRanking } from '../../functions';
+import { authenticateUser } from  '../../middleware/authenticator'
 
 export const getRankingRoute: FastifyPluginAsyncZod = async app => {
   app.get(

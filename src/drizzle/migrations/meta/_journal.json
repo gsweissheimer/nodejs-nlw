@@ -15,6 +15,13 @@
       "when": 1740336966162,
       "tag": "0001_quiet_paper_doll",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1740343500359,
+      "tag": "0002_blushing_zzzax",
+      "breakpoints": true
     }
   ]
 }

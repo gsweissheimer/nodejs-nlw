@@ -1,8 +1,7 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from "zod";
-import { env } from '../env';
-import { accessInviteLinks } from '../functions/';
-import { redis } from '../redis/client';
+import { env } from '../../env';
+import { accessInviteLinks } from '../../functions/';
 
 export const acessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
     app.get(

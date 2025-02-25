@@ -1,7 +1,4 @@
-import { eq } from "drizzle-orm"
-import { db } from "../drizzle/client"
-import { subscriptions } from "../drizzle/schema/subscriptions"
-import { redis } from "../redis/client"
+import { redis } from "../../redis/client"
 
 interface GetSubscriberRankingPosition {
     subscriberId: string,

@@ -10,7 +10,7 @@ import {
 export const mySchema = pgSchema('my_schema')
 
 export const tutor = pgTable('tutor', {
-  id: uuid('id').primaryKey(),
+  id: uuid('id').primaryKey().defaultRandom(),
   name: text('name').notNull(),
   cpf: text('cpf').notNull(),
   email: text('email').notNull().unique(),
