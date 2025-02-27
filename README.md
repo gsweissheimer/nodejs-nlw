@@ -46,11 +46,7 @@ Update the environment variables as needed.
 
 ### 3. Install Dependencies
 
->pnpm install
-
-or
-
->npm install
+>npx install
 
 ### 4. Start the Application with Docker
 
@@ -62,17 +58,9 @@ Ensure Docker is running, then build and start the containers:
 
 After starting the database, apply migrations using Drizzle:
 
->pnpm drizzle-kit migrate
-
-or
-
->npm drizzle-kit migrate
+>npx drizzle-kit migrate
 
 ### 6. Start the Development Server
-
->pnpm dev
-
-or
 
 >npm run dev 
 

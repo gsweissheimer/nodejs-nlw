@@ -1,4 +1,9 @@
 import type { FastifyInstance } from 'fastify'
+
+import { authenticateUser } from '../middleware/authenticator'
+
+import { loginRoute } from './registration/login-route'
+import { siginRoute } from './registration/sigin-route'
 import { acessInviteLinkRoute } from './subscription/access-invite-link-route'
 import { getRankingRoute } from './subscription/get-ranking-route'
 import { getSubscriberInvitesClicksRoute } from './subscription/get-subscriber-invites-clicks-route'
@@ -6,19 +11,40 @@ import { getSubscriberInvitesCountRoute } from './subscription/get-subscriber-in
 import { getSubscriberRankingPositionRoute } from './subscription/get-subscriber-ranking-position-route'
 import { subscribeToEventRoute } from './subscription/subscribe-to-event-route'
 
-import { loginRoute } from './registration/login-route'
+import { createPet } from './pet/create-pet'
+import { getPetsByTutorId } from './pet/get-pet'
 
-import { siginRoute } from './registration/sigin-route'
+import { sendMessageToAI } from './ai/send-message-route'
 
+import { getUserBFF } from './user/get-user-full'
+
+import { RoutesType } from '../enums/routes'
+
+const publicRoutes = [
+  subscribeToEventRoute,
+  acessInviteLinkRoute,
+  getSubscriberInvitesClicksRoute,
+  getSubscriberInvitesCountRoute,
+  getSubscriberRankingPositionRoute,
+  getRankingRoute,
+  loginRoute,
+  siginRoute,
+  sendMessageToAI,
+]
+
+const authRoutes = [createPet, getPetsByTutorId, getUserBFF]
 
 export function registerRoutes(app: FastifyInstance) {
-  app.register(subscribeToEventRoute)
-  app.register(acessInviteLinkRoute)
-  app.register(getSubscriberInvitesClicksRoute)
-  app.register(getSubscriberInvitesCountRoute)
-  app.register(getSubscriberRankingPositionRoute)
-  app.register(getRankingRoute)
-
-  app.register(loginRoute)
-  app.register(siginRoute)
+  for (const route of publicRoutes) {
+    app.register(route, { prefix: `/${RoutesType.PUBLIC_ROUTES_PREFIX}` })
+  }
+  for (const route of authRoutes) {
+    app.register(
+      async (privateApp) => {
+        privateApp.addHook('preHandler', authenticateUser)
+        privateApp.register(route)
+      },
+      { prefix: `/${RoutesType.AUTH_ROUTES_PREFIX}` }
+    )
+  }
 }

@@ -61,8 +61,6 @@ export const siginRoute: FastifyPluginAsyncZod = async app => {
         if (userResponse.hasError || userResponse.user == null)
           throw new Error(userResponse.message)
 
-        console.log('user', userResponse.user)
-
         return reply.status(201).send({ 
           user: {
             ...userResponse.user,

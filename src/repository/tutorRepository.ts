@@ -11,3 +11,11 @@ export const createTutorRepository = async (
   const newTutor = await db.insert(tutor).values({ name, cpf, email, isActive: true }).returning();
   return newTutor[0]
 }
+
+export const GetTutorByUserIdRepository = async (
+  id: string
+): Promise<Tutor> => {
+  const tutorData = await db.select().from(tutor).where(eq(tutor.id, id))
+
+  return tutorData[0]
+}

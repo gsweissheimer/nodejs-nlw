@@ -6,9 +6,16 @@ import { getSubscriberRankingPosition } from './subscription/get-subscriber-rank
 import { subscribeToEvent } from './subscription/subscribe-to-event'
 
 import { generateToken, verifyUserNameAndPassword } from './auth/login'
-import { createTutor } from './tutor/create-tutor'
-import { createUser } from './user/create-user'
 
+import { createTutor } from './tutor/create-tutor'
+
+import { createUser } from './user/create-user'
+import { getUserFull } from './user/get-user-full'
+
+import { createPet } from './pet/create-pet'
+import { getPetsByTutorId } from './pet/get-pets-by-tutor-id'
+
+import { answerMessage } from './ai/answer-message'
 
 export {
   accessInviteLinks,
@@ -21,4 +28,8 @@ export {
   generateToken,
   createTutor,
   createUser,
+  createPet,
+  getPetsByTutorId,
+  getUserFull,
+  answerMessage,
 }

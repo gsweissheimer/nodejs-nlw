@@ -5,6 +5,7 @@ const envSchema = z.object({
   POSTGRESQL_URL: z.string().url().default("postgres://postgres:password@localhost:5433/postgres"),
   REDIS_URL: z.string().url().default("redis://localhost:6379"),
   WEB_URL: z.string().url().default("http://localhost:3000"),
+  OPENAI_API_KEY: z.string().default(""),
 });
 
 export const env = envSchema.parse(process.env);
