@@ -10,7 +10,7 @@ import { generateToken, verifyUserNameAndPassword } from './auth/login'
 import { createTutor } from './tutor/create-tutor'
 
 import { createUser } from './user/create-user'
-import { getUserFull } from './user/get-user-full'
+import { getUserBFF } from './user/get-user-full'
 
 import { createPet } from './pet/create-pet'
 import { getPetsByTutorId } from './pet/get-pets-by-tutor-id'
@@ -30,6 +30,6 @@ export {
   createUser,
   createPet,
   getPetsByTutorId,
-  getUserFull,
+  getUserBFF,
   answerMessage,
 }

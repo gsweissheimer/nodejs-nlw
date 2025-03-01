@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getUserFull } from '../../functions'
+import { getUserBFF } from '../../functions'
 import type { Response, UserFull } from '../../models/'
 
 const data = z.object({
@@ -45,16 +45,16 @@ const userSchema = {
   params: z.object({
     userId: z.string(),
   }),
-  response: {
-    200: response,
-  },
+  // response: {
+  //   200: response,
+  // },
 }
 
-export const getUserBFF: FastifyPluginAsyncZod = async app => {
+export const getUserFullBFF: FastifyPluginAsyncZod = async app => {
   app.get('/user/:userId', { schema: userSchema }, async (request, reply) => {
     const { userId } = request.params
 
-    const res: Response<UserFull> = await getUserFull(userId)
+    const res = await getUserBFF(userId)
 
     return reply.send(res)
   })

@@ -49,6 +49,7 @@ export const GetFamilyUsersByFamilyIdRepository = async (
     .from(familyTutor)
     .innerJoin(family, eq(family.id, familyTutor.familyId))
     .innerJoin(tutor, eq(tutor.id, familyTutor.tutorId))
+    .innerJoin(userRecord, eq(userRecord.tutorId, tutor.id))
     .where(and(eq(familyTutor.familyId, familyId), not(eq(tutor.id, userId))))
 
   return users

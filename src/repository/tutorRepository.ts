@@ -12,7 +12,7 @@ export const createTutorRepository = async (
   return newTutor[0]
 }
 
-export const GetTutorByUserIdRepository = async (
+export const GetTutorByIdRepository = async (
   id: string
 ): Promise<Tutor> => {
   const tutorData = await db.select().from(tutor).where(eq(tutor.id, id))

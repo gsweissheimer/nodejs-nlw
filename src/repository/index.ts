@@ -4,7 +4,7 @@ import {
   createPetRepository,
   getPetsByTutorIdRepository,
 } from './petRepository'
-import { GetTutorByUserIdRepository, createTutorRepository } from './tutorRepository'
+import { GetTutorByIdRepository, createTutorRepository } from './tutorRepository'
 import {
   GetFamilyUsersByFamilyIdRepository,
   createUserRepository,
@@ -19,7 +19,7 @@ export {
   createPetRepository,
   getPetsByTutorIdRepository,
   getUserByIdRepository,
-  GetTutorByUserIdRepository,
+  GetTutorByIdRepository as GetTutorByUserIdRepository,
   getFamilyByTutorIdRepository,
   GetFamilyUsersByFamilyIdRepository,
   // answerMessageRepository,

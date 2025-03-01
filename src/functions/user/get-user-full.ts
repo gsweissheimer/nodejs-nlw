@@ -18,7 +18,7 @@ const getUserFull = async (uuid: string) => {
     const user: User = await getUserByIdRepository(uuid)
 
     if (!user) {
-      throw new Error('User not found')
+      return { hasError: true, message: 'User not found' }
     }
 
     const userFull: UserFull = {
@@ -26,23 +26,26 @@ const getUserFull = async (uuid: string) => {
         email: user.username,
     }
 
-    const tutor: Tutor = await GetTutorByUserIdRepository(user.id)
+    if (!user.tutorId) {
+      return { hasError: true, message: 'User has no tutor' }
+    }
+    const tutor: Tutor = await GetTutorByUserIdRepository(user.tutorId)
 
     if (!tutor) {
-      throw new Error('Tutor not found')
+      return { hasError: true, message: 'Tutor not found' }
     }
 
     if (tutor.id) {
         userFull.name = tutor.name
         userFull.pets = await getPetsByTutorIdRepository(tutor.id)
     } else {
-      throw new Error('Tutor ID is undefined')
+      return { hasError: true, message: 'Tutor ID is undefined' }
     }
 
     const family: Family = await getFamilyByTutorIdRepository(tutor.id)
 
     if (!family) {
-      throw new Error('family not found')
+      return { hasError: true, message: 'family not found' }
     }
 
     userFull.family = {
@@ -54,10 +57,10 @@ const getUserFull = async (uuid: string) => {
       await Promise.all(
         userFull.family.users.map(async (user: UserFull) => {
           if (user.id != null) {
-            if (tutor.id) {// corrigir multiplas validações
+            if (tutor.id) {
               user.pets = await getPetsByTutorIdRepository(tutor.id)
             } else {
-              throw new Error('Tutor ID is undefined')
+              return { hasError: true, message: 'Tutor ID is undefined' }
             }
           }
         })

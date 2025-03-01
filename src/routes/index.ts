@@ -16,7 +16,7 @@ import { getPetsByTutorId } from './pet/get-pet'
 
 import { sendMessageToAI } from './ai/send-message-route'
 
-import { getUserBFF } from './user/get-user-full'
+import { getUserFullBFF } from './user/get-user-full'
 
 import { RoutesType } from '../enums/routes'
 
@@ -32,7 +32,7 @@ const publicRoutes = [
   sendMessageToAI,
 ]
 
-const authRoutes = [createPet, getPetsByTutorId, getUserBFF]
+const authRoutes = [createPet, getPetsByTutorId, getUserFullBFF]
 
 export function registerRoutes(app: FastifyInstance) {
   for (const route of publicRoutes) {
