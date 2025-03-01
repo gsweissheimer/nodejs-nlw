@@ -21,6 +21,7 @@ import { getUserFullBFF } from './user/get-user-full'
 import { RoutesType } from '../enums/routes'
 
 import { createEvent } from './event/create-event'
+import { deleteEvent } from './event/delete-event'
 
 const publicRoutes = [
   subscribeToEventRoute,
@@ -34,7 +35,13 @@ const publicRoutes = [
   sendMessageToAI,
 ]
 
-const authRoutes = [ createPet, getPetsByTutorId, getUserFullBFF, createEvent ]
+const authRoutes = [
+  createPet,
+  getPetsByTutorId,
+  getUserFullBFF,
+  createEvent,
+  deleteEvent,
+]
 
 export function registerRoutes(app: FastifyInstance) {
   for (const route of publicRoutes) {
