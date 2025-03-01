@@ -1,3 +1,4 @@
+import { createEventRepository } from './eventRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
@@ -11,7 +12,6 @@ import {
   getUserByIdRepository,
   getUserByUsernameRepository,
 } from './userRepository'
-
 export {
   createTutorRepository,
   getUserByUsernameRepository,
@@ -22,5 +22,5 @@ export {
   GetTutorByIdRepository as GetTutorByUserIdRepository,
   getFamilyByTutorIdRepository,
   GetFamilyUsersByFamilyIdRepository,
-  // answerMessageRepository,
+  createEventRepository,
 }

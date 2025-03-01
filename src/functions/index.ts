@@ -17,6 +17,8 @@ import { getPetsByTutorId } from './pet/get-pets-by-tutor-id'
 
 import { answerMessage } from './ai/answer-message'
 
+import { createEvent } from './event/create-event'
+
 export {
   accessInviteLinks,
   subscribeToEvent,
@@ -32,4 +34,5 @@ export {
   getPetsByTutorId,
   getUserBFF,
   answerMessage,
+  createEvent,
 }

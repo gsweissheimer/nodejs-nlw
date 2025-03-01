@@ -55,6 +55,7 @@ export const getUserFullBFF: FastifyPluginAsyncZod = async app => {
     const { userId } = request.params
 
     const res = await getUserBFF(userId)
+    // const res: Response<UserFull> = await getUserBFF(userId)
 
     return reply.send(res)
   })
