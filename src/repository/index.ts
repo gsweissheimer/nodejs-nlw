@@ -3,6 +3,7 @@ import { getFamilyByTutorIdRepository } from './familyRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
   createPetRepository,
+  getPetByIdRepository,
   getPetsByTutorIdRepository,
 } from './petRepository'
 import { GetTutorByIdRepository, createTutorRepository } from './tutorRepository'
@@ -24,4 +25,5 @@ export {
   GetFamilyUsersByFamilyIdRepository,
   createEventRepository,
   deleteEventByIdRepository,
+  getPetByIdRepository,
 }

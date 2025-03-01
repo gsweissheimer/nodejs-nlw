@@ -12,7 +12,8 @@ import { getSubscriberRankingPositionRoute } from './subscription/get-subscriber
 import { subscribeToEventRoute } from './subscription/subscribe-to-event-route'
 
 import { createPet } from './pet/create-pet'
-import { getPetsByTutorId } from './pet/get-pet'
+import { getPetById } from './pet/get-pet-by-id'
+import { getPetsByTutorId } from './pet/get-pets-by-tuto-id'
 
 import { sendMessageToAI } from './ai/send-message-route'
 
@@ -41,6 +42,7 @@ const authRoutes = [
   getUserFullBFF,
   createEvent,
   deleteEvent,
+  getPetById,
 ]
 
 export function registerRoutes(app: FastifyInstance) {

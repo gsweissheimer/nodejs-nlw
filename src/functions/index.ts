@@ -13,6 +13,7 @@ import { createUser } from './user/create-user'
 import { getUserBFF } from './user/get-user-full'
 
 import { createPet } from './pet/create-pet'
+import { getPetById } from './pet/get-pet-by-id'
 import { getPetsByTutorId } from './pet/get-pets-by-tutor-id'
 
 import { answerMessage } from './ai/answer-message'
@@ -37,4 +38,5 @@ export {
   answerMessage,
   createEvent,
   deleteEventById,
+  getPetById,
 }

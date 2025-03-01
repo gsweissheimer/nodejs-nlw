@@ -12,6 +12,17 @@ export const getPetsByTutorIdRepository = async (uuid: string): Promise<Pet[]> =
     return pets
 }
 
+export const getPetByIdRepository = async (
+  uuid: string
+): Promise<Pet[]> => {
+  const pets: Pet[] = await db
+    .select()
+    .from(petSchema)
+    .where(eq(petSchema.id, uuid))
+
+  return pets
+}
+
 export const createPetRepository = async (
   newPet: Pet
 ): Promise<Pet> => {
