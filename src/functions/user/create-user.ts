@@ -12,9 +12,10 @@ export interface Response {
 export const createUser = async (
   username: string,
   password: string,
+  tutorId: string
 ): Promise<Response> => {
   try {
-    const user = await createUserRepository(username, password)
+    const user = await createUserRepository(username, password, tutorId)
     return { hasError: false, user: user }
   } catch (error) {
     return { hasError: true, message: 'Can not create user.' }

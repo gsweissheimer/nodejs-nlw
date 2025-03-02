@@ -1,13 +1,7 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from "zod";
 import { createPet as addPet } from '../../functions/index'
-import type { Pet } from '../../models/'
-
-export interface Response {
-  hasError: boolean
-  message?: string
-  pet?: Pet
-}
+import type { Pet, Response } from '../../models/'
 
 export const createPet: FastifyPluginAsyncZod = async app => {
   app.post(
@@ -47,7 +41,7 @@ export const createPet: FastifyPluginAsyncZod = async app => {
     async (request, reply) => {
       const { name, type, breedId, tutorId, birthDate, microchip } =
         request.body
-      
+
       const pet: Pet = {
         name: name,
         type: type,
@@ -62,11 +56,11 @@ export const createPet: FastifyPluginAsyncZod = async app => {
       
       const res: Response = await addPet(pet)
 
-      if (res.hasError || res.pet == null) {
+      if (res.hasError || res.data == null) {
         throw new Error(res.message)
       }
 
-      return reply.status(201).send({ pet: res.pet })
+      return reply.status(201).send({ pet: res.data as Pet })
     }
   )
 }

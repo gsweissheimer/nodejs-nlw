@@ -56,7 +56,9 @@ export const siginRoute: FastifyPluginAsyncZod = async app => {
 
         const userResponse: UserResponse = await createUser(
           email,
-          hashedPassword)
+          hashedPassword,
+          tutorResponse.tutor?.id
+        )
 
         if (userResponse.hasError || userResponse.user == null)
           throw new Error(userResponse.message)

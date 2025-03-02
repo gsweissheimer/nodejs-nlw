@@ -24,6 +24,7 @@ const getUserFull = async (uuid: string) => {
     const userFull: UserFull = {
         id: user.id,
         email: user.username,
+        tutorId: user.tutorId,
     }
 
     if (!user.tutorId) {
@@ -50,15 +51,15 @@ const getUserFull = async (uuid: string) => {
 
     userFull.family = {
       name: family.name,
-      users: await GetFamilyUsersByFamilyIdRepository(tutor.id, family.id),
+      users: await GetFamilyUsersByFamilyIdRepository(family.id, tutor.id),
     }
     
     if (userFull.family.users) {
       await Promise.all(
         userFull.family.users.map(async (user: UserFull) => {
           if (user.id != null) {
-            if (tutor.id) {
-              user.pets = await getPetsByTutorIdRepository(tutor.id)
+            if (user.tutorId) {
+              user.pets = await getPetsByTutorIdRepository(user.tutorId)
             } else {
               return { hasError: true, message: 'Tutor ID is undefined' }
             }

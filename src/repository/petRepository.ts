@@ -26,6 +26,7 @@ export const getPetByIdRepository = async (
 export const createPetRepository = async (
   newPet: Pet
 ): Promise<Pet> => {
+  
   const returnPet = await db
     .insert(petSchema)
     .values({
@@ -37,8 +38,8 @@ export const createPetRepository = async (
         microchip: newPet.microchip,
         isActive: newPet.isActive,
         angel: newPet.angel,
-        createdAt: newPet.createdAt,
-        updatedAt: newPet.updatedAt})
+        createdAt: newPet.createdAt})
     .returning()
+    
   return returnPet[0]
 }
