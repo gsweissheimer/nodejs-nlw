@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getPetById as getPet } from '../../functions'
+import { getEventsByPetId, getPetById as getPet } from '../../functions'
 import type { Pet } from '../../models'
 import type { Response } from '../../models'
 
@@ -43,6 +43,17 @@ export const getPetById: FastifyPluginAsyncZod =
 
       const res: Response<Pet[]> = await getPet(id)
 
+      if (res.data) {
+        await Promise.all(res.data.map(async pet => {
+          if (pet.id === undefined) return
+          
+          const eventsResponse = await getEventsByPetId(pet.id)
+          
+          pet.events = eventsResponse.data || []
+          
+          console.log('events', pet.events)
+        }))
+      }
       return reply.send(res)
     })
   }

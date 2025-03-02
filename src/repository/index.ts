@@ -1,4 +1,5 @@
 import { createEventRepository, deleteEventByIdRepository } from './eventRepository'
+import { getEventsByPetIdRepository } from './eventRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
@@ -26,4 +27,5 @@ export {
   createEventRepository,
   deleteEventByIdRepository,
   getPetByIdRepository,
+  getEventsByPetIdRepository,
 }

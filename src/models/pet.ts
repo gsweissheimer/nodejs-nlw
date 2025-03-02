@@ -1,4 +1,5 @@
-export interface Pet {
+import type { Event } from '../models/'
+export interface Pet extends PetEvent {
   id?: string
   name: string
   type: string
@@ -10,4 +11,8 @@ export interface Pet {
   angel: boolean
   createdAt: Date
   updatedAt?: Date | null
+}
+
+export interface PetEvent {
+  events?: Event[]
 }

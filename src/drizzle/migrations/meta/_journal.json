@@ -43,6 +43,13 @@
       "when": 1740831750272,
       "tag": "0005_clean_white_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1740922805221,
+      "tag": "0006_premium_dreadnoughts",
+      "breakpoints": true
     }
   ]
 }

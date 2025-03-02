@@ -20,6 +20,7 @@ import { answerMessage } from './ai/answer-message'
 
 import { createEvent } from './event/create-event'
 import { deleteEventById } from './event/delete-event'
+import { getEventsByPetId } from './event/get-events-by-pet-id'
 
 export {
   accessInviteLinks,
@@ -27,6 +28,7 @@ export {
   getSubscriberInvitesClicks,
   getSubscriberRankingPosition,
   getSubscriberInvitesCount,
+  getEventsByPetId,
   getRanking,
   verifyUserNameAndPassword,
   generateToken,

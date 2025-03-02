@@ -1,5 +1,5 @@
+import type { Server as HTTPServer } from 'node:http';
 import { Server } from 'socket.io';
-import http from 'http';
 
 let io: Server;
 
@@ -10,10 +10,10 @@ export const getIO = () => {
   return io;
 };
 
-export default (server: http.Server) => {
+export default (server: HTTPServer) => {
     io = new Server(server, {
         cors: {
-            origin: 'http://localhost:3000', 
+            origin: 'http://localhost:3002', 
             methods: ['GET', 'POST'],
             credentials: true
         },

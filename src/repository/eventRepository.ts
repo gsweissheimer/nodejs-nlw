@@ -10,10 +10,11 @@ export const createEventRepository = async (
     .insert(eventSchema)
     .values({
       name: event.name,
+      value: event.value,
       type: event.type,
-      entity_id: event.entityId,
-      entity_type: event.entityType,
-      event_date: event.eventDate,
+      entityId: event.entityId,
+      entityType: event.entityType,
+      eventDate: event.eventDate,
     })
     .returning()
 
@@ -24,4 +25,15 @@ export const deleteEventByIdRepository = async (id: string): Promise<boolean> =>
   await db.delete(eventSchema).where(eq(eventSchema.id, id))
 
   return true 
+}
+
+export const getEventsByPetIdRepository = async (
+  entityId: string
+): Promise<Event[]> => {
+  const event = await db
+    .select()
+    .from(eventSchema)
+    .where(eq(eventSchema.entityId, entityId))
+
+  return event
 }

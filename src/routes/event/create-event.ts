@@ -24,6 +24,7 @@ export const createEvent: FastifyPluginAsyncZod = async app => {
         tags: ['event'],
         body: z.object({
           name: z.string(),
+          value: z.string(),
           type: EventTypeEnum,
           entityId: z.string(),
           entityType: EntityTypeEnum,
@@ -35,10 +36,11 @@ export const createEvent: FastifyPluginAsyncZod = async app => {
       },
     },
     async (request, reply) => {
-      const { name, type, entityId, entityType, eventDate } = request.body
+      const { name, value, type, entityId, entityType, eventDate } = request.body
 
       const event: Event = {
         name: name,
+        value: value,
         type: type,
         entityId: entityId,
         entityType: entityType,

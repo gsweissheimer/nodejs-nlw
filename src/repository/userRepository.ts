@@ -9,12 +9,11 @@ import type { User, UserMin } from '../models/user'
 export const getUserByUsernameRepository = async (
   username: string
 ): Promise<User> => {
-  console.log('username', username)
   const user = await db
     .select()
     .from(userRecord)
     .where(eq(userRecord.username, username))
-console.log('user', user)
+
   return user[0]
 }
 export const getUserByIdRepository = async (
@@ -42,8 +41,7 @@ export const GetFamilyUsersByFamilyIdRepository = async (
   familyId: string,
   tutorId: string
 ): Promise<UserMin[]> => {
-  console.log('familyId', familyId)
-  console.log('tutorId', tutorId)
+  
   const users = await db
     .select({
       id: userRecord.id,
@@ -61,6 +59,5 @@ export const GetFamilyUsersByFamilyIdRepository = async (
       )
     )
 
-  console.log('Query Result:', users)
   return users
 }
