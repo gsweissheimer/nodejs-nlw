@@ -16,7 +16,7 @@ export interface UserFull {
   id?: string
   name?: string
   email?: string
-  tutorId: string | null
+  tutorId?: string | null
   pets?: Pet[]
   family?: FamilyFull
 }

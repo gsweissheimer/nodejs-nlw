@@ -13,60 +13,39 @@ import { safeExecute } from '../../utils/safeExecute'
 export const getUserBFF = async (uuid: string) =>
   safeExecute(() => getUserFull(uuid), 'Can not get user.')
 
-const getUserFull = async (uuid: string) => {
+const getUserFull = async (uuid: string): Promise<UserFull> => {
+  const user = await getUserByIdRepository(uuid)
+  if (!user) throw new Error('User not found')
 
-    const user: User = await getUserByIdRepository(uuid)
+  const userFull: UserFull = {
+    id: user.id,
+    email: user.username,
+    tutorId: user.tutorId,
+  }
 
-    if (!user) {
-      return { hasError: true, message: 'User not found' }
-    }
+  if (!user.tutorId) throw new Error('User has no tutor')
 
-    const userFull: UserFull = {
-        id: user.id,
-        email: user.username,
-        tutorId: user.tutorId,
-    }
+  const tutor: Tutor = await GetTutorByUserIdRepository(user.tutorId)
+  if (!tutor || !tutor.id) throw new Error('Tutor not found')
 
-    if (!user.tutorId) {
-      return { hasError: true, message: 'User has no tutor' }
-    }
-    const tutor: Tutor = await GetTutorByUserIdRepository(user.tutorId)
+  userFull.name = tutor.name
+  userFull.pets = await getPetsByTutorIdRepository(tutor.id)
 
-    if (!tutor) {
-      return { hasError: true, message: 'Tutor not found' }
-    }
+  const family = await getFamilyByTutorIdRepository(tutor.id)
+  if (!family) throw new Error('Family not found')
 
-    if (tutor.id) {
-        userFull.name = tutor.name
-        userFull.pets = await getPetsByTutorIdRepository(tutor.id)
-    } else {
-      return { hasError: true, message: 'Tutor ID is undefined' }
-    }
+  userFull.family = {
+    name: family.name,
+    users: await GetFamilyUsersByFamilyIdRepository(family.id, tutor.id),
+  }
+  
+  await Promise.all(
+    userFull.family.users.map(async (familyUser) => {
+      if (familyUser.id && familyUser.tutorId) {
+        familyUser.pets = await getPetsByTutorIdRepository(familyUser.tutorId)
+      }
+    })
+  )
 
-    const family: Family = await getFamilyByTutorIdRepository(tutor.id)
-
-    if (!family) {
-      return { hasError: true, message: 'family not found' }
-    }
-
-    userFull.family = {
-      name: family.name,
-      users: await GetFamilyUsersByFamilyIdRepository(family.id, tutor.id),
-    }
-    
-    if (userFull.family.users) {
-      await Promise.all(
-        userFull.family.users.map(async (user: UserFull) => {
-          if (user.id != null) {
-            if (user.tutorId) {
-              user.pets = await getPetsByTutorIdRepository(user.tutorId)
-            } else {
-              return { hasError: true, message: 'Tutor ID is undefined' }
-            }
-          }
-        })
-      )
-    }
-
-    return {hasError: false, user: userFull}
+  return userFull
 }

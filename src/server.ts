@@ -13,6 +13,8 @@ import { env } from "./env";
 import {
   registerRoutes
 } from './routes/'
+import initializeSocketServer from './websockets/socketServer'
+
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -46,4 +48,5 @@ registerRoutes(app)
 
 app.listen({ port: env.PORT }).then(() => {
   console.log("Server is running on port 3001");
+  initializeSocketServer(app.server)
 });

@@ -2,19 +2,7 @@ import bcrypt from 'bcrypt'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from "zod";
 import { createTutor, createUser } from '../../functions/'
-import type { Tutor, User } from '../../models/'
-
-export interface TutorResponse {
-  hasError: boolean
-  message?: string
-  tutor?: Tutor
-}
-
-export interface UserResponse {
-  hasError: boolean
-  message?: string
-  user?: User
-}
+import type { Response, Tutor, User } from '../../models/'
 
 export const siginRoute: FastifyPluginAsyncZod = async app => {
     app.post(
@@ -47,28 +35,28 @@ export const siginRoute: FastifyPluginAsyncZod = async app => {
       async (request, reply) => {
         const { password, name, cpf, email } = request.body
 
-        const tutorResponse: TutorResponse = await createTutor(name, cpf, email)
+        const tutorResponse: Response<Tutor> = await createTutor(name, cpf, email)
 
-        if (tutorResponse.hasError || tutorResponse.tutor?.id == null)
+        if (tutorResponse.hasError || tutorResponse.data?.id == null)
           throw new Error(tutorResponse.message)
 
         const hashedPassword = await bcrypt.hash(password, 12)
 
-        const userResponse: UserResponse = await createUser(
+        const userResponse: Response<User> = await createUser(
           email,
           hashedPassword,
-          tutorResponse.tutor?.id
+          tutorResponse.data?.id
         )
 
-        if (userResponse.hasError || userResponse.user == null)
+        if (userResponse.hasError || userResponse.data == null)
           throw new Error(userResponse.message)
 
         return reply.status(201).send({ 
           user: {
-            ...userResponse.user,
-            tutorId: userResponse.user.tutorId ?? '',
-            createdAt: userResponse.user.createdAt.toISOString(),
-            updatedAt: userResponse.user.updatedAt?.toISOString() ?? ''
+            ...userResponse.data,
+            tutorId: userResponse.data.tutorId ?? '',
+            createdAt: userResponse.data.createdAt.toISOString(),
+            updatedAt: userResponse.data.updatedAt?.toISOString() ?? ''
           }
         })
       }
