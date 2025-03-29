@@ -1,10 +1,16 @@
 import { createEventRepository, deleteEventByIdRepository } from './eventRepository'
-import { getEventsByPetIdRepository } from './eventRepository'
+import {
+  getEventsByPetIdRepository,
+  getEventsByTutorIdRepository,
+  getFamilyEventsByFamilyIdRepository,
+  getTutorFamilyEventsByFamilyIdRepository,
+} from './eventRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
   createPetRepository,
   getPetByIdRepository,
+  getPetsByFamilyIdRepository,
   getPetsByTutorIdRepository,
 } from './petRepository'
 import { GetTutorByIdRepository, createTutorRepository } from './tutorRepository'
@@ -27,5 +33,9 @@ export {
   createEventRepository,
   deleteEventByIdRepository,
   getPetByIdRepository,
+  getFamilyEventsByFamilyIdRepository,
+  getTutorFamilyEventsByFamilyIdRepository as getTutorFamilyEventsByTutorIdRepository,
+  getEventsByTutorIdRepository,
   getEventsByPetIdRepository,
+  getPetsByFamilyIdRepository,
 }
