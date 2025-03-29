@@ -26,10 +26,18 @@ const getEventsByTutorIdFunction = async (tutorId: string) => {
     return []
   }
 
+  if (family.data.tutorId !== tutorId) {
+    const familyOwnerEvents: Event[] = await getEventsByTutorIdRepository(
+      family.data.tutorId
+    )
+
+    res.push(...familyOwnerEvents)
+  }
+
   const familyEvents: Event[] = await getFamilyEventsByFamilyIdRepository(family.data.id)
 
   const tutorFamilyEvents: Event[] =
-    await getTutorFamilyEventsByTutorIdRepository(family.data.id)
+    await getTutorFamilyEventsByTutorIdRepository(family.data.id, tutorId)
 
   const myPets: Response<Pet[]> = await getPetsByTutorId(tutorId)
 
@@ -45,17 +53,29 @@ const getEventsByTutorIdFunction = async (tutorId: string) => {
     return []
   }
 
+  if (family.data.tutorId !== tutorId) {
+
+    const ownerPets: Response<Pet[]> = await getPetsByTutorId(family.data.tutorId)
+
+    if (ownerPets.hasError || ownerPets.data == null) {
+      return []
+    }
+
+    pets.push(...ownerPets.data)
+
+  }
+
   pets.push(...familyPets.data)
 
   const petsIds: string[] = pets.map(pet => pet.id).filter((id): id is string => id !== undefined)
 
   const petEvents: Event[] = await getEventsByPetIdRepository(petsIds)
-  console.log('res 1', res)
+
   res.push(...familyEvents)
-  console.log('familyEvents', familyEvents)
+
   res.push(...tutorFamilyEvents)
-  console.log('tutorFamilyEvents', tutorFamilyEvents)
+
   res.push(...petEvents)
-  console.log('petEvents', petEvents)
+
   return res
 }

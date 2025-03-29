@@ -1,4 +1,4 @@
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq, inArray, not } from "drizzle-orm";
 import { db } from "../drizzle/client";
 import { event as eventSchema, } from '../drizzle/schema/event'
 import { familyTutor as familyTutorSchema } from '../drizzle/schema/family_tutor'
@@ -83,7 +83,8 @@ export const getFamilyEventsByFamilyIdRepository = async (
 }
 
 export const getTutorFamilyEventsByFamilyIdRepository = async (
-  familyId: string
+  familyId: string,
+  tutorId: string
 ): Promise<Event[]> => {
 
   const events: Event[] = await db
@@ -106,7 +107,8 @@ export const getTutorFamilyEventsByFamilyIdRepository = async (
       and(
         eq(familyTutorSchema.familyId, familyId),
         eq(eventSchema.entityType, 'tutor'),
-        eq(eventSchema.entityId, familyTutorSchema.tutorId)
+        eq(eventSchema.entityId, familyTutorSchema.tutorId),
+        not(eq(familyTutorSchema.tutorId, tutorId))
       )
     )
     .orderBy(eventSchema.eventDate)
