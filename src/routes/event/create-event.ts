@@ -1,41 +1,11 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import { z } from "zod";
 import { createEvent as addEvent } from '../../functions/'
-import type { Event } from '../../models/'
-import { EntityTypeEnum, EventTypeEnum } from '../../models/'
-
-const data = z.object({
-  id: z.string(),
-})
-
-const response = z.object({
-  hasError: z.boolean(),
-  message: z.string().optional(),
-  data: z.array(data).optional(),
-})
+import type { Event, Response } from '../../models/'
+import { addEventIdSchema } from '../../schemas/'
 
 export const createEvent: FastifyPluginAsyncZod = async app => {
-  app.post(
-    '/event/add',
-    {
-      schema: {
-        summary: 'Add Event Rout',
-        description: 'Route to Add event to pet or family.',
-        tags: ['event'],
-        body: z.object({
-          name: z.string(),
-          value: z.string(),
-          type: EventTypeEnum,
-          entityId: z.string(),
-          entityType: EntityTypeEnum,
-          eventDate: z.string(),
-        }),
-        // response: {
-        //   201: response,
-        // },
-      },
-    },
-    async (request, reply) => {
+  app.post('/event/add', { schema: addEventIdSchema }, async (request, reply) => {
+
       const { name, value, type, entityId, entityType, eventDate } = request.body
 
       const event: Event = {
@@ -48,14 +18,13 @@ export const createEvent: FastifyPluginAsyncZod = async app => {
         createdAt: new Date(),
       }
 
-      const res = await addEvent(event)
-      //   const res: Response<string> = await addEvent(event)
+      const res: Response<string> = await addEvent(event)
 
       if (res.hasError || res.data == null) {
         throw new Error(res.message)
       }
 
-      return reply.status(201).send(res)
+      return reply.send(res)
     }
   )
 }

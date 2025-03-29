@@ -14,7 +14,7 @@ const data = z.array(
       })
     .optional())
 
-export const listEventsSchema = {
+export const getEventsListEventsSchema = {
     summary: 'Get events',
     description: 'Get pets events filtering by its tutor id',
     tags: ['event'],
