@@ -100,9 +100,15 @@ export const getTutorFamilyEventsByFamilyIdRepository = async (
     .from(familyTutorSchema)
     .innerJoin(
       eventSchema,
-      eq(familyTutorSchema.familyId, familyTutorSchema.familyId)
+      eq(eventSchema.entityId, familyTutorSchema.tutorId)
     )
-    .where(eq(familyTutorSchema.familyId, familyId))
+    .where(
+      and(
+        eq(familyTutorSchema.familyId, familyId),
+        eq(eventSchema.entityType, 'tutor'),
+        eq(eventSchema.entityId, familyTutorSchema.tutorId)
+      )
+    )
     .orderBy(eventSchema.eventDate)
 
   return events

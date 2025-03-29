@@ -19,9 +19,7 @@ export const getEventsByTutorId = async (tutorId: string) =>
 const getEventsByTutorIdFunction = async (tutorId: string) => {
 
   const res: Event[] = await getEventsByTutorIdRepository(tutorId)
-  
-  console.log(res)
-  
+    
   const family: Response<Family> = await getFamilyByTutorId(tutorId)
 
   if (family.hasError || family.data == null) {
@@ -52,10 +50,12 @@ const getEventsByTutorIdFunction = async (tutorId: string) => {
   const petsIds: string[] = pets.map(pet => pet.id).filter((id): id is string => id !== undefined)
 
   const petEvents: Event[] = await getEventsByPetIdRepository(petsIds)
-
+  console.log('res 1', res)
   res.push(...familyEvents)
+  console.log('familyEvents', familyEvents)
   res.push(...tutorFamilyEvents)
+  console.log('tutorFamilyEvents', tutorFamilyEvents)
   res.push(...petEvents)
-  
+  console.log('petEvents', petEvents)
   return res
 }
