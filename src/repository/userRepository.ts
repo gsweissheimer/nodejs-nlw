@@ -59,5 +59,19 @@ export const GetFamilyUsersByFamilyIdRepository = async (
       )
     )
 
+  if (users.length === 0) {
+      const ownerUsers = await db
+        .select({
+          id: userRecord.id,
+          username: userRecord.username,
+          tutorId: userRecord.tutorId,
+        })
+        .from(family)
+        .innerJoin(userRecord, eq(userRecord.tutorId, family.tutorId))
+        .where(eq(family.id, familyId))
+
+        users.push(...ownerUsers)
+  }
+
   return users
 }
