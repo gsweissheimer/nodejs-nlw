@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm'
 import { db } from "../drizzle/client";
 import { familyTutor as familyTutorSchema } from '../drizzle/schema/family_tutor'
 import { pet as petSchema } from "../drizzle/schema/pet";
@@ -10,7 +10,7 @@ export const getPetsByTutorIdRepository = async (
   const pets: Pet[] = await db
     .select()
     .from(petSchema)
-    .where(eq(petSchema.tutorId, uuid))
+    .where(and(eq(petSchema.tutorId, uuid),eq(petSchema.isActive, true)))
 
   return pets
 }
@@ -34,7 +34,7 @@ export const getPetsByFamilyIdRepository = async (
     })
     .from(familyTutorSchema)
     .innerJoin(petSchema, eq(familyTutorSchema.tutorId, petSchema.tutorId))
-    .where(eq(familyTutorSchema.familyId, uuid))
+    .where(and(eq(familyTutorSchema.familyId, uuid), eq(petSchema.isActive, true)))
 
   return pets
 }
@@ -69,4 +69,16 @@ export const createPetRepository = async (
     .returning()
     
   return returnPet[0]
+}
+
+export const archivePetByIdRepository = async (
+  id: string
+): Promise<boolean> => {
+  const returnPet = await db
+    .update(petSchema)
+    .set({ isActive: false })
+    .where(eq(petSchema.id, id))
+    .returning()
+
+  return returnPet.length > 0
 }

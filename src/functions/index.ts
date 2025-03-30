@@ -14,6 +14,7 @@ import { createTutor } from './tutor/create-tutor'
 import { createUser } from './user/create-user'
 import { getUserBFF } from './user/get-user-full'
 
+import { archivePetById } from './pet/archive-pet'
 import { createPet } from './pet/create-pet'
 import { getPetById } from './pet/get-pet-by-id'
 import { getPetsByFamilyId } from './pet/get-pets-by-family-id'
@@ -39,6 +40,7 @@ export {
   createTutor,
   createUser,
   createPet,
+  archivePetById,
   getPetsByTutorId,
   getUserBFF,
   answerMessage,

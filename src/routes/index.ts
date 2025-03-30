@@ -12,6 +12,7 @@ import { getSubscriberRankingPositionRoute } from './subscription/get-subscriber
 import { subscribeToEventRoute } from './subscription/subscribe-to-event-route'
 
 import { createPet } from './pet/create-pet'
+import { deletePet } from './pet/delete-pet'
 import { getPetById } from './pet/get-pet-by-id'
 import { getPetsByTutorId } from './pet/get-pets-by-tuto-id'
 
@@ -40,6 +41,7 @@ const publicRoutes = [
 
 const authRoutes = [
   createPet,
+  deletePet,
   getPetsByTutorId,
   getUserFullBFF,
   createEvent,

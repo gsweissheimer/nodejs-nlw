@@ -6,12 +6,6 @@ const data = z.object({
   id: z.string(),
 })
 
-const response = z.object({
-  hasError: z.boolean(),
-  message: z.string().optional(),
-  data: z.array(data).optional(),
-})
-
 export const addEventIdSchema = {
     summary: 'Add Event Route',
     description: 'Route to Add event to pet or family.',

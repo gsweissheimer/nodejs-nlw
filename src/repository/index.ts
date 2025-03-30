@@ -8,6 +8,7 @@ import {
 import { getFamilyByTutorIdRepository } from './familyRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
+  archivePetByIdRepository,
   createPetRepository,
   getPetByIdRepository,
   getPetsByFamilyIdRepository,
@@ -33,6 +34,7 @@ export {
   createEventRepository,
   deleteEventByIdRepository,
   getPetByIdRepository,
+  archivePetByIdRepository,
   getFamilyEventsByFamilyIdRepository,
   getTutorFamilyEventsByFamilyIdRepository as getTutorFamilyEventsByTutorIdRepository,
   getEventsByTutorIdRepository,
