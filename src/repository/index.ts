@@ -13,6 +13,7 @@ import {
   getPetByIdRepository,
   getPetsByFamilyIdRepository,
   getPetsByTutorIdRepository,
+  updatePetByIdRepository,
 } from './petRepository'
 import { GetTutorByIdRepository, createTutorRepository } from './tutorRepository'
 import {
@@ -40,4 +41,5 @@ export {
   getEventsByTutorIdRepository,
   getEventsByPetIdRepository,
   getPetsByFamilyIdRepository,
+  updatePetByIdRepository,
 }

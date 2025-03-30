@@ -82,3 +82,24 @@ export const archivePetByIdRepository = async (
 
   return returnPet.length > 0
 }
+
+export const updatePetByIdRepository = async (pet: Pet): Promise<Pet> => {
+  if (!pet.id) {
+    throw new Error('Pet ID is required for update')
+  }
+  const returnedPet = await db
+    .update(petSchema)
+    .set({
+      name: pet.name,
+      type: pet.type,
+      breedId: pet.breedId,
+      tutorId: pet.tutorId,
+      birthDate: pet.birthDate,
+      microchip: pet.microchip,
+      isActive: pet.isActive,
+    })
+    .where(eq(petSchema.id, pet.id))
+    .returning()
+
+  return returnedPet[0]
+}

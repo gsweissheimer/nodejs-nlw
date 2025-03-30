@@ -15,6 +15,7 @@ import { createPet } from './pet/create-pet'
 import { deletePet } from './pet/delete-pet'
 import { getPetById } from './pet/get-pet-by-id'
 import { getPetsByTutorId } from './pet/get-pets-by-tuto-id'
+import { updatePet } from './pet/update-pet'
 
 import { sendMessageToAI } from './ai/send-message-route'
 
@@ -42,6 +43,7 @@ const publicRoutes = [
 const authRoutes = [
   createPet,
   deletePet,
+  updatePet,
   getPetsByTutorId,
   getUserFullBFF,
   createEvent,

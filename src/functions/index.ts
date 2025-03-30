@@ -19,6 +19,7 @@ import { createPet } from './pet/create-pet'
 import { getPetById } from './pet/get-pet-by-id'
 import { getPetsByFamilyId } from './pet/get-pets-by-family-id'
 import { getPetsByTutorId } from './pet/get-pets-by-tutor-id'
+import { updatePetById } from './pet/update-pet'
 
 import { answerMessage } from './ai/answer-message'
 
@@ -49,5 +50,6 @@ export {
   getEventsByTutorId,
   getFamilyByTutorId,
   getPetById,
+  updatePetById,
   getPetsByFamilyId,
 }
