@@ -24,6 +24,7 @@ import { RoutesType } from '../enums/routes'
 import { createEvent } from './event/create-event'
 import { deleteEvent } from './event/delete-event'
 import { getEventsByTutorId } from './event/get-event'
+import { getEventsByPetId } from './event/get-event'
 
 const publicRoutes = [
   subscribeToEventRoute,
@@ -45,6 +46,7 @@ const authRoutes = [
   deleteEvent,
   getPetById,
   getEventsByTutorId,
+  getEventsByPetId,
 ]
 
 export function registerRoutes(app: FastifyInstance) {

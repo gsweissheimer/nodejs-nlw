@@ -16,6 +16,9 @@ import { safeExecute } from '../../utils/safeExecute'
 export const getEventsByTutorId = async (tutorId: string) =>
   safeExecute(() => getEventsByTutorIdFunction(tutorId), 'Can not get events.')
 
+export const getEventsByPetId = async (petId: string) =>
+  safeExecute(() => getEventsByPetIdRepository(petId), 'Can not get events.')
+
 const getEventsByTutorIdFunction = async (tutorId: string) => {
 
   const res: Event[] = await getEventsByTutorIdRepository(tutorId)
