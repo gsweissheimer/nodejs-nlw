@@ -35,6 +35,7 @@ const getUserFull = async (uuid: string): Promise<UserFull> => {
   if (!family) throw new Error('Family not found')
 
   userFull.family = {
+    id: family.id,
     name: family.name,
     users: await GetFamilyUsersByFamilyIdRepository(family.id, tutor.id),
   }
@@ -46,6 +47,6 @@ const getUserFull = async (uuid: string): Promise<UserFull> => {
       }
     })
   )
-
+  
   return userFull
 }

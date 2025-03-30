@@ -8,6 +8,7 @@ export interface Family {
   updatedAt: Date | null
 }
 export interface FamilyFull {
+  id: string
   name: string
   users: UserFull[]
 }

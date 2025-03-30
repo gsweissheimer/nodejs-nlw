@@ -25,6 +25,7 @@ const data = z.object({
     .optional(),
   family: z
     .object({
+      id: z.string(),
       name: z.string(),
       users: z.array(
         z.object({

@@ -1,3 +1,4 @@
+
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { createEvent as addEvent } from '../../functions/'
 import type { Event, Response } from '../../models/'
@@ -17,9 +18,9 @@ export const createEvent: FastifyPluginAsyncZod = async app => {
         eventDate: new Date(eventDate),
         createdAt: new Date(),
       }
-
+      console.log('event', event)
       const res: Response<string> = await addEvent(event)
-
+      
       if (res.hasError || res.data == null) {
         throw new Error(res.message)
       }

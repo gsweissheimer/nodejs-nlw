@@ -51,7 +51,6 @@ export const getPetById: FastifyPluginAsyncZod =
           
           pet.events = eventsResponse.data || []
           
-          console.log('events', pet.events)
         }))
       }
       return reply.send(res)
