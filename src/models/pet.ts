@@ -1,5 +1,5 @@
 import type { Event } from '../models/'
-export interface Pet extends PetEvent {
+export interface Pet extends PetEvent, PetUX {
   id?: string
   name: string
   type: string
@@ -15,4 +15,8 @@ export interface Pet extends PetEvent {
 
 export interface PetEvent {
   events?: Event[]
+}
+
+export interface PetUX {
+  color?: string
 }

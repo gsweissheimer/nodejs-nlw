@@ -1,5 +1,5 @@
 
-import type { Family, Tutor, User, UserFull } from '../../models/'
+import type { Family, Pet, Tutor, User, UserFull } from '../../models/'
 import {
   GetFamilyUsersByFamilyIdRepository,
   GetTutorByUserIdRepository,
@@ -14,6 +14,20 @@ export const getUserBFF = async (uuid: string) =>
   safeExecute(() => getUserFull(uuid), 'Can not get user.')
 
 const getUserFull = async (uuid: string): Promise<UserFull> => {
+
+  const animalColor = {
+    Crimson: { value: 'Crimson', unused: true },
+    RoyalBlue: { value: 'RoyalBlue', unused: true },
+    ForestGreen: { value: 'ForestGreen', unused: true },
+    GoldenRod: { value: 'GoldenRod', unused: true },
+    DeepPink: { value: 'DeepPink', unused: true },
+    OrangeRed: { value: 'OrangeRed', unused: true },
+    MediumPurple: { value: 'MediumPurple', unused: true },
+    Teal: { value: 'Teal', unused: true },
+    DarkOrange: { value: 'DarkOrange', unused: true },
+    SlateBlue: { value: 'SlateBlue', unused: true },
+  }
+
   const user = await getUserByIdRepository(uuid)
   if (!user) throw new Error('User not found')
 
@@ -29,7 +43,10 @@ const getUserFull = async (uuid: string): Promise<UserFull> => {
   if (!tutor || !tutor.id) throw new Error('Tutor not found')
 
   userFull.name = tutor.name
-  userFull.pets = await getPetsByTutorIdRepository(tutor.id)
+  userFull.pets = assignColorsToPets(
+    await getPetsByTutorIdRepository(tutor.id),
+    animalColor
+  )
 
   const family = await getFamilyByTutorIdRepository(tutor.id)
   if (!family) throw new Error('Family not found')
@@ -43,10 +60,29 @@ const getUserFull = async (uuid: string): Promise<UserFull> => {
   await Promise.all(
     userFull.family.users.map(async (familyUser) => {
       if (familyUser.id && familyUser.tutorId) {
-        familyUser.pets = await getPetsByTutorIdRepository(familyUser.tutorId)
+        familyUser.pets = assignColorsToPets(
+          await getPetsByTutorIdRepository(familyUser.tutorId),
+          animalColor
+        )
       }
     })
   )
   
   return userFull
 }
+
+const assignColorsToPets = (pets: Pet[], animalColor: object) => {
+  return pets.map((pet) => {
+    const coloredPet = {
+      ...pet,
+      color: Object.values(animalColor).find(color => color.unused)?.value,
+    }
+
+    const unusedColor = Object.values(animalColor).find(color => color.unused);
+    if (unusedColor) {
+      unusedColor.unused = false;
+    }
+    
+    return coloredPet;
+  });
+};
