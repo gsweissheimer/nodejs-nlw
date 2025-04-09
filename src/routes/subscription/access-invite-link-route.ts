@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from "zod";
-import { env } from '../../env';
+
 import { accessInviteLinks } from '../../functions/';
 
 export const acessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
@@ -26,7 +26,7 @@ export const acessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
 
         await accessInviteLinks({ subscriberId })
 
-        const redirectUrl = new URL(env.WEB_URL)
+        const redirectUrl = new URL(process.env.WEB_URL as string)
 
         redirectUrl.searchParams.set('referrer', subscriberId)
 

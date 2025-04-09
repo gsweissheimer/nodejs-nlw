@@ -9,7 +9,6 @@ import {
     validatorCompiler
 } from "fastify-type-provider-zod";
 
-import { env } from "./env";
 import {
   registerRoutes
 } from './routes/'
@@ -46,7 +45,7 @@ app.get("/ping", () => {
 
 registerRoutes(app)
 
-app.listen({ port: env.PORT }).then(() => {
-  console.log("Server is running on port 3001");
+app.listen({ port: Number(process.env.PORT as string) }).then(() => {
+  console.log('Server is running on port 3001')
   initializeSocketServer(app.server)
-});
+})

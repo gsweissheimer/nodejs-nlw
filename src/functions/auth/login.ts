@@ -18,7 +18,10 @@ export const getUserByUsername = async (
     const user = await getUserByUsernameRepository(username)
     return user
   } catch (error) {
-    throw error.message
+    if (error instanceof Error) {
+      throw error.message
+    }
+    throw String(error)
   }
 }
 
