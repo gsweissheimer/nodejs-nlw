@@ -30,7 +30,7 @@ WORKDIR /app
 COPY --from=builder /app/package.json /app/package-lock.json* ./
 
 # Instala SOMENTE as dependências de produção
-RUN npm ci --only=production
+RUN npm ci --only=production --legacy-peer-deps
 
 # Copia a pasta 'dist' com o código JavaScript compilado (agora .mjs) do estágio de build
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
