@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 
 # Instala todas as dependências (incluindo devDependencies necessárias para o build com tsup)
 # 'npm ci' é mais rápido e garante consistência com o lockfile
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # Copia o restante do código fonte (incluindo a pasta 'src' com seu código TypeScript)
 COPY . .
