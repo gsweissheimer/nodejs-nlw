@@ -4,6 +4,7 @@ import { responseSchema } from './responseSchema'
 const data = z.object({
   pet: z.object({
     id: z.string().optional(),
+    color: z.string(),
     name: z.string(),
     type: z.string(),
     breedId: z.string(),
@@ -23,6 +24,7 @@ export const updatePetSchema = {
   tags: ['pet'],
   body: z.object({
     id: z.string(),
+    color: z.string(),
     name: z.string(),
     type: z.string(),
     breedId: z.string(),

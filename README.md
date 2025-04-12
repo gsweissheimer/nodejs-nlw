@@ -56,6 +56,8 @@ Ensure Docker is running, then build and start the containers:
 
 ### 5. Run Migrations (if needed)
 
+npx drizzle-kit generate
+
 After starting the database, apply migrations using Drizzle:
 
 >npx drizzle-kit migrate

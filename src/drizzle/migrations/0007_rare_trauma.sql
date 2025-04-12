@@ -1,0 +1,1 @@
+ALTER TABLE "pet" ADD COLUMN "color" text DEFAULT '#45a8eb' NOT NULL;

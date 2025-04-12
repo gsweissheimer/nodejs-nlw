@@ -18,7 +18,7 @@ export const createEvent: FastifyPluginAsyncZod = async app => {
         eventDate: new Date(eventDate),
         createdAt: new Date(),
       }
-      console.log('event', event)
+      
       const res: Response<string> = await addEvent(event)
       
       if (res.hasError || res.data == null) {

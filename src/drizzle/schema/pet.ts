@@ -13,6 +13,7 @@ import { tutor } from './tutor'
 export const pet = pgTable('pet', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: text('name').notNull(),
+  color: text('color').notNull().default('#45a8eb'),
   type: text('type').notNull(),
   breedId: uuid('breed_id')
     .references(() => breed.id)

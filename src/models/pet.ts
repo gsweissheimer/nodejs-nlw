@@ -3,6 +3,7 @@ export interface Pet extends PetEvent, PetUX {
   id?: string
   name: string
   type: string
+  color: string
   breedId: string
   tutorId: string
   birthDate: Date

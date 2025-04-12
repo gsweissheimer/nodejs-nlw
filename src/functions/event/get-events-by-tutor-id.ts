@@ -1,6 +1,7 @@
 
 import {
   getFamilyByTutorId,
+  getPetById,
   getPetsByFamilyId,
   getPetsByTutorId,
 } from '../../functions/'
@@ -79,6 +80,15 @@ const getEventsByTutorIdFunction = async (tutorId: string) => {
   res.push(...tutorFamilyEvents)
 
   res.push(...petEvents)
+
+  for (const event of res) {
+    if (event.entityType === 'pet') {
+      const petResponse = await getPetById(event.entityId)
+      event.tooltip = petResponse.data?.[0]?.name ?? 'Unknown'
+    } else {
+      event.tooltip = 'Desconhecido'
+    }
+  }
 
   return res
 }

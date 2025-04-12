@@ -2,17 +2,20 @@ import { z } from 'zod'
 import { responseSchema } from './responseSchema'
 
 const data = z.array(
-      z.object({
-        id: z.string().optional(),
-        name: z.string(),
-        entityId: z.string(),
-        entityType: z.string(),
-        eventDate: z.date(),
-        createdAt: z.date(),
-        type: z.string(),
-        value: z.string(),
-      })
-    .optional())
+  z
+    .object({
+      id: z.string().optional(),
+      name: z.string(),
+      tooltip: z.string().optional(),
+      entityId: z.string(),
+      entityType: z.string(),
+      eventDate: z.date(),
+      createdAt: z.date(),
+      type: z.string(),
+      value: z.string(),
+    })
+    .optional()
+)
 
 export const getEventsListEventsSchema = {
     summary: 'Get events',

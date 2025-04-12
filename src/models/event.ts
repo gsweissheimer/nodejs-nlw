@@ -13,6 +13,7 @@ export interface Event {
   id?: string
   name: string
   value: string
+  tooltip?: string
   type: EventType
   entityId: string
   entityType: EntityType

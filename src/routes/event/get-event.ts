@@ -14,7 +14,7 @@ export const getEventsByTutorId: FastifyPluginAsyncZod = async app => {
       const { id } = request.params
 
       const res: Response<Event[]> = await getEvents(id)
-
+      console.log('res', res)
       return reply.send(res)
     }
   )
@@ -28,7 +28,7 @@ export const getEventsByPetId: FastifyPluginAsyncZod = async app => {
       const { id } = request.params
 
       const res: Response<Event[]> = await getEventsByPet(id)
-
+      
       return reply.send(res)
     }
   )
