@@ -1,6 +1,6 @@
 # ---- Estágio 1: Build ----
 # Use a imagem Node.js 18 Alpine como base (consistente com o log anterior e bom para produção)
-FROM node:18-alpine AS builder
+FROM node:18 AS builder
 
 # Define o diretório de trabalho
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 
 # Instala todas as dependências (incluindo devDependencies necessárias para o build com tsup)
 # 'npm ci' é mais rápido e garante consistência com o lockfile
-RUN npm install
+RUN npm ci
 
 # Copia o restante do código fonte (incluindo a pasta 'src' com seu código TypeScript)
 COPY . .
@@ -22,7 +22,7 @@ RUN npm run build
 
 # ---- Estágio 2: Produção ----
 # Use a mesma imagem base
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
