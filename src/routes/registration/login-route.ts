@@ -10,7 +10,6 @@ export interface Response {
 }
 
 export const loginRoute: FastifyPluginAsyncZod = async app => {
-  console.log('*** INÍCIO: Executando plugin loginRoute MÍNIMO ***')
     app.post(
       '/login',
       {
