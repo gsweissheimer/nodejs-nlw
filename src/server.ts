@@ -45,7 +45,9 @@ app.get("/ping", () => {
 
 registerRoutes(app)
 
-app.listen({ port: Number(process.env.PORT as string) }).then(() => {
-  console.log('Server is running on port 3001')
-  initializeSocketServer(app.server)
-})
+app
+  .listen({ port: Number(process.env.PORT as string), host: '0.0.0.0' })
+  .then(() => {
+    console.log('Server is running on port 3001')
+    initializeSocketServer(app.server)
+  })
