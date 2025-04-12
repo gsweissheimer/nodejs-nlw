@@ -31,7 +31,6 @@ COPY --from=builder /app/package.json /app/package-lock.json* ./
 
 # Instala SOMENTE as dependências de produção
 RUN npm ci --only=production --legacy-peer-deps
-RUN npx drizzle-kit migrate
 
 # Copia a pasta 'dist' com o código JavaScript compilado (agora .mjs) do estágio de build
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
@@ -43,4 +42,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Comando para iniciar a aplicação em produção, apontando para o arquivo .mjs
-CMD ["node", "dist/server.mjs"]
+CMD ["sh", "-c", "npx drizzle-kit migrate && node dist/server.mjs"]
