@@ -38,12 +38,10 @@ RUN npm ci
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
 COPY --from=builder /app/dist ./dist
 
-COPY --from=builder /app/src/drizzle/migrations ./src/drizzle/migrations
-
 # Expõe a porta interna que sua aplicação (Fastify) vai escutar.
 # Lembre-se: Sua aplicação DEVE usar process.env.PORT fornecido pelo Railway.
 # 3000 é um valor comum, mas o Railway vai sobrescrever via variável de ambiente.
 EXPOSE 3000
 
 # Comando para iniciar a aplicação em produção, apontando para o arquivo .mjs
-CMD ["sh", "-c", "npx drizzle-kit migrate && node dist/server.mjs"]
+CMD ["sh", "-c", "npx drizzle-kit generate && npx drizzle-kit migrate && node dist/server.mjs"]
