@@ -10,7 +10,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { registerRoutes } from './routes/'
-import initializeSocketServer from './websockets/socketServer'
+// import initializeSocketServer from './websockets/socketServer'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -55,7 +55,7 @@ app
   .listen({ port: Number(process.env.PORT) || 3001, host: '0.0.0.0' })
   .then(() => {
     console.log('Server is running on port 3001')
-    initializeSocketServer(app.server) // inicializa socket.io após o servidor HTTP estar pronto
+    // initializeSocketServer(app.server) // inicializa socket.io após o servidor HTTP estar pronto
   })
   .catch(err => {
     console.error(err)
