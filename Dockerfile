@@ -19,6 +19,7 @@ COPY . .
 # Executa o script de build ('tsup-node' conforme seu package.json)
 # Isso deve compilar seu TypeScript para JavaScript, geralmente para uma pasta 'dist'
 RUN npm run build
+RUN npx drizzle-kit migrate
 
 # ---- Estágio 2: Produção ----
 # Use a mesma imagem base
@@ -32,7 +33,7 @@ COPY --from=builder /app/package.json /app/package-lock.json* ./
 COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
 
 # Instala SOMENTE as dependências de produção
-RUN npm ci --only=production 
+RUN npm ci
 
 # Copia a pasta 'dist' com o código JavaScript compilado (agora .mjs) do estágio de build
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
@@ -44,4 +45,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Comando para iniciar a aplicação em produção, apontando para o arquivo .mjs
-CMD ["sh", "-c", "npx drizzle-kit migrate && node dist/server.mjs"]
+CMD ["node", "dist/server.mjs"]
