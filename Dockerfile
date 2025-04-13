@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 
 # Instala todas as dependências (incluindo devDependencies necessárias para o build com tsup)
 # 'npm ci' é mais rápido e garante consistência com o lockfile
-RUN npm ci --legacy-peer-deps
+RUN npm ci 
 
 # Copia o restante do código fonte (incluindo a pasta 'src' com seu código TypeScript)
 COPY . .
@@ -32,7 +32,7 @@ COPY --from=builder /app/package.json /app/package-lock.json* ./
 COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
 
 # Instala SOMENTE as dependências de produção
-RUN npm ci --only=production --legacy-peer-deps
+RUN npm ci --only=production 
 
 # Copia a pasta 'dist' com o código JavaScript compilado (agora .mjs) do estágio de build
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
