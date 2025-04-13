@@ -1,1 +1,0 @@
-ALTER TABLE "event" RENAME COLUMN "entity_uuid" TO "entity_id";
