@@ -29,6 +29,8 @@ WORKDIR /app
 # Copia package.json e package-lock.json do estágio de build
 COPY --from=builder /app/package.json /app/package-lock.json* ./
 
+COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
+
 # Instala SOMENTE as dependências de produção
 RUN npm ci --only=production --legacy-peer-deps
 
