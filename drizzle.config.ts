@@ -5,6 +5,6 @@ export default defineConfig({
   out: './src/drizzle/migrations',
   dialect: 'postgresql',
   dbCredentials: {
-    url: 'postgresql://postgres:ScpeLMGlrgPpqDDjjEsbRAxfiVkAhpVi@postgres.railway.internal:5432/railway',
+    url: 'postgresql://postgres:FdtnFzLiWyQZNTDOUtsvYxajewErRoJu@trolley.proxy.rlwy.net:48702/railway',
   },
 })

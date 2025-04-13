@@ -1,4 +1,6 @@
 .env
 node_modules
 dist
+src/drizzle/_migrations_Production/*
+src/drizzle/_migrations_/*
 src/drizzle/migrations/*
