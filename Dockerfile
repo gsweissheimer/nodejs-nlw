@@ -38,6 +38,8 @@ RUN npm ci
 # Se 'tsup-node' gerar em outro diretório, ajuste '/app/dist'
 COPY --from=builder /app/dist ./dist
 
+COPY --from=builder /app/src/drizzle/migrations ./src/drizzle/migrations
+
 # Expõe a porta interna que sua aplicação (Fastify) vai escutar.
 # Lembre-se: Sua aplicação DEVE usar process.env.PORT fornecido pelo Railway.
 # 3000 é um valor comum, mas o Railway vai sobrescrever via variável de ambiente.
