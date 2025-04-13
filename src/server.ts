@@ -36,8 +36,7 @@ app.register(fastifySwaggerUi, {
 // CORS global para Fastify
 app.register(fastifyCors, {
   origin: [
-    'http://localhost:3002',
-    'https://react-nlw-production.up.railway.app',
+    '*',
   ],
   credentials: true,
 })
