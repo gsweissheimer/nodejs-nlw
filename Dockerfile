@@ -44,4 +44,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Comando para iniciar a aplicação em produção, apontando para o arquivo .mjs
-CMD ["sh", "-c", "npx drizzle-kit generate && npx drizzle-kit migrate && node dist/server.mjs"]
+CMD ["node", "dist/server.mjs"]
