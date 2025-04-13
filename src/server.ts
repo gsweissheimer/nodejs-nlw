@@ -35,7 +35,8 @@ app.register(fastifySwaggerUi, {
 
 // CORS global para Fastify
 app.register(fastifyCors, {
-  origin: 'http://localhost:3002', // define a origem permitida
+  origin: ['http://localhost:3002', 'http://192.168.56.1:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 })
 
