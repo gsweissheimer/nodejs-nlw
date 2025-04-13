@@ -15,7 +15,7 @@ const response = z.object({
 
 export const deleteEvent: FastifyPluginAsyncZod = async app => {
     app.delete(
-        '/event/delete/:id',
+        '/event/:id',
         {
             schema: {
                 summary: 'Delete Event Route',
