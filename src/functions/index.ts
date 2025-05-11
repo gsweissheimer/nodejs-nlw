@@ -30,6 +30,7 @@ import { getEventsByTutorId } from './event/get-events-by-tutor-id'
 
 import { createLead } from './lead/create-lead'
 import { deleteLeadById } from './lead/delete-lead'
+import { getLeads } from './lead/get-lead'
 
 export {
   accessInviteLinks,
@@ -57,4 +58,5 @@ export {
   getPetsByFamilyId,
   createLead,
   deleteLeadById,
+  getLeads,
 }
