@@ -28,6 +28,8 @@ import { deleteEventById } from './event/delete-event'
 import { getEventsByPetId } from './event/get-events-by-pet-id'
 import { getEventsByTutorId } from './event/get-events-by-tutor-id'
 
+import { createLead } from './lead/create-lead'
+
 export {
   accessInviteLinks,
   subscribeToEvent,
@@ -52,4 +54,5 @@ export {
   getPetById,
   updatePetById,
   getPetsByFamilyId,
+  createLead,
 }

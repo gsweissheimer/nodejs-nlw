@@ -1,12 +1,6 @@
-import type { QueryResult } from 'mysql2'
+import type { QueryResult, ResultSetHeader, RowDataPacket } from 'mysql2'
 import { pool } from '../db'
-
-export interface Lead {
-  id: number
-  name: string
-  tutorId: string
-  isActive: boolean
-}
+import type { Lead } from '../models/'
 
 export const getLeads = async (): Promise<Lead[]> => {
   const [rows] = await pool.query<QueryResult>(
@@ -17,4 +11,17 @@ export const getLeads = async (): Promise<Lead[]> => {
   )
 
   return rows as Lead[]
+}
+
+export const createLeadRepository = async (lead: Lead): Promise<Lead> => {
+  const [result] = await pool.query<ResultSetHeader>(
+    `insert into lead (name, email, a_b_landingpage, created_at)
+        values ('${lead.name}', '${lead.email}', '${lead.aBLandingpage}', '${lead.createdAt}');`
+  )
+
+  console.log('result', result)
+
+  lead.id = result.insertId.toString();
+  
+  return lead as Lead
 }

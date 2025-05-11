@@ -6,6 +6,7 @@ import {
   getTutorFamilyEventsByFamilyIdRepository,
 } from './eventRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
+import { createLeadRepository } from './leadRepository'
 // import { answerMessageRepository } from './messageRepository'
 import {
   archivePetByIdRepository,
@@ -42,4 +43,5 @@ export {
   getEventsByPetIdRepository,
   getPetsByFamilyIdRepository,
   updatePetByIdRepository,
+  createLeadRepository,
 }

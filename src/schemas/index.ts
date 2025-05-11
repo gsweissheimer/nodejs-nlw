@@ -1,4 +1,5 @@
 import { addEventIdSchema } from './addEventIdSchema'
+import { createLeadSchema } from './createLeadSchema'
 import { deletePetSchema } from './deletePetSchema'
 import { getEventsListEventsSchema } from './getEventsListEventsSchema'
 import { updatePetSchema } from './petSchema'
@@ -12,4 +13,5 @@ export {
   deletePetSchema,
   updatePetSchema,
   addEventIdSchema,
+  createLeadSchema,
 }
