@@ -34,6 +34,7 @@ import { getAllLeads } from './lead/get-lead'
 
 const publicRoutes = [
   subscribeToEventRoute,
+  addLead,
   acessInviteLinkRoute,
   getSubscriberInvitesClicksRoute,
   getSubscriberInvitesCountRoute,
@@ -47,7 +48,6 @@ const publicRoutes = [
 const authRoutes = [
   getAllLeads,
   deleteLead,
-  addLead,
   createPet,
   deletePet,
   updatePet,

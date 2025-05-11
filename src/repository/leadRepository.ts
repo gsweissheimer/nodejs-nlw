@@ -15,8 +15,8 @@ export const getLeads = async (): Promise<Lead[]> => {
 
 export const createLeadRepository = async (lead: Lead): Promise<Lead> => {
   const [result] = await pool.query<ResultSetHeader>(
-    `insert into lead (name, email, a_b_landingpage, created_at)
-        values ('${lead.name}', '${lead.email}', '${lead.aBLandingpage}', '${lead.createdAt}');`
+    `insert into lead (name, email, phone, a_b_landingpage, created_at)
+        values ('${lead.name}', '${lead.email}', '${lead.phone}', '${lead.aBLandingpage}', '${lead.createdAt}');`
   )
 
   lead.id = result.insertId.toString();

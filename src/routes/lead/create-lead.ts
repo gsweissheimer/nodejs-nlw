@@ -17,14 +17,14 @@ export const addLead: FastifyPluginAsyncZod = async app => {
               aBLandingpage,
               createdAt: new Date().toISOString(),
             }
-        
-        const res: Response = await createLead(lead)
 
-        if (res.hasError || res.data == null) {
-            throw new Error(res.message)
-        }
+            const res: Response = await createLead(lead)
 
-        return reply.status(201).send(res)
-        }
+            if (res.hasError || res.data == null) {
+                throw new Error(res.message)
+            }
+
+            return reply.status(201).send(res)
+          }
   )
 }
