@@ -19,9 +19,15 @@ export const createLeadRepository = async (lead: Lead): Promise<Lead> => {
         values ('${lead.name}', '${lead.email}', '${lead.aBLandingpage}', '${lead.createdAt}');`
   )
 
-  console.log('result', result)
-
   lead.id = result.insertId.toString();
   
   return lead as Lead
+}
+
+export const deleteLeadByIdRepository = async (id: number): Promise<boolean> => {
+  const [rows] = await pool.query<QueryResult>(
+    `delete from lead where id = ${id};`
+  )
+
+  return true 
 }

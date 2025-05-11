@@ -29,6 +29,7 @@ import { getEventsByPetId } from './event/get-events-by-pet-id'
 import { getEventsByTutorId } from './event/get-events-by-tutor-id'
 
 import { createLead } from './lead/create-lead'
+import { deleteLeadById } from './lead/delete-lead'
 
 export {
   accessInviteLinks,
@@ -55,4 +56,5 @@ export {
   updatePetById,
   getPetsByFamilyId,
   createLead,
+  deleteLeadById,
 }

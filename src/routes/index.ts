@@ -29,6 +29,7 @@ import { getEventsByTutorId } from './event/get-event'
 import { getEventsByPetId } from './event/get-event'
 
 import { addLead } from './lead/create-lead'
+import { deleteLead } from './lead/delete-lead'
 import { getAllLeads } from './lead/get-lead'
 
 const publicRoutes = [
@@ -45,6 +46,7 @@ const publicRoutes = [
 
 const authRoutes = [
   getAllLeads,
+  deleteLead,
   addLead,
   createPet,
   deletePet,
