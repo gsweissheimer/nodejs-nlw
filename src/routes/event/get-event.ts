@@ -4,31 +4,23 @@ import {
   getEventsByPetId as getEventsByPet,
 } from '../../functions/'
 import type { Event, Response } from '../../models/'
-import { listEventsSchema } from '../../schemas';
+import { getEventsListEventsSchema } from '../../schemas'
 
 export const getEventsByTutorId: FastifyPluginAsyncZod = async app => {
-  app.get(
-    '/event/:id',
-    { schema: listEventsSchema },
+  app.get('/event/:id', { schema: getEventsListEventsSchema },
     async (request, reply) => {
       const { id } = request.params
-
       const res: Response<Event[]> = await getEvents(id)
-      console.log('res', res)
       return reply.send(res)
     }
   )
 }
 
 export const getEventsByPetId: FastifyPluginAsyncZod = async app => {
-  app.get(
-    '/event/pet/:id',
-    { schema: listEventsSchema },
+  app.get('/event/pet/:id', { schema: getEventsListEventsSchema },
     async (request, reply) => {
       const { id } = request.params
-
       const res: Response<Event[]> = await getEventsByPet(id)
-      
       return reply.send(res)
     }
   )

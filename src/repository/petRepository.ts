@@ -23,6 +23,7 @@ export const getPetsByFamilyIdRepository = async (
       id: petSchema.id,
       name: petSchema.name,
       type: petSchema.type,
+      color: petSchema.color,
       breedId: petSchema.breedId,
       tutorId: petSchema.tutorId,
       birthDate: petSchema.birthDate,
@@ -41,13 +42,13 @@ export const getPetsByFamilyIdRepository = async (
 
 export const getPetByIdRepository = async (
   uuid: string
-): Promise<Pet[]> => {
+): Promise<Pet> => {
   const pets: Pet[] = await db
     .select()
     .from(petSchema)
     .where(eq(petSchema.id, uuid))
 
-  return pets
+  return pets[0]
 }
 
 export const createPetRepository = async (

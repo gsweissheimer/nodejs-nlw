@@ -1,21 +1,10 @@
-import { addEventIdSchema } from './addEventIdSchema'
-import { createLeadSchema } from './createLeadSchema'
-import { deleteLeadSchema } from './deleteLeadSchema'
-import { deletePetSchema } from './deletePetSchema'
-import { getEventsListEventsSchema } from './getEventsListEventsSchema'
-import { getLeadsSchema } from './getLeadsSchema'
-import { updatePetSchema } from './petSchema'
-import { responseSchema } from './responseSchema'
-import { userFullSchema } from './userFullSchema'
-
-export {
-  getEventsListEventsSchema as listEventsSchema,
-  responseSchema,
-  userFullSchema,
-  deletePetSchema,
-  updatePetSchema,
-  addEventIdSchema,
-  createLeadSchema,
-  deleteLeadSchema,
-  getLeadsSchema,
-}
+export * from './addEventIdSchema'
+export * from './createLeadSchema'
+export * from './deleteLeadSchema'
+export * from './deletePetSchema'
+export * from './getEventsListEventsSchema'
+export * from './getLeadsSchema'
+export * from './getPetSchema'
+export * from './petSchema'
+export * from './responseSchema'
+export * from './userFullSchema'
