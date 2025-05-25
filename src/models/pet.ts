@@ -9,6 +9,12 @@ export interface Pet extends PetEvent, PetUX {
   birthDate: Date
   microchip: boolean
   isActive: boolean
+  isVaccinated: boolean
+  isCastrated: boolean
+  isFiev: boolean
+  isFelv: boolean
+  dewormedExpirationDate: Date | null
+  antiFleaExpirationDate: Date | null
   angel: boolean
   createdAt: Date
   updatedAt?: Date | null

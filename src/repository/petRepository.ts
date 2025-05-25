@@ -29,7 +29,13 @@ export const getPetsByFamilyIdRepository = async (
       birthDate: petSchema.birthDate,
       microchip: petSchema.microchip,
       isActive: petSchema.isActive,
+      isVaccinated: petSchema.isVaccinated,
+      isCastrated: petSchema.isCastrated,
+      isFiev: petSchema.isFiev,
+      isFelv: petSchema.isFelv,
       angel: petSchema.angel,
+      dewormedExpirationDate: petSchema.dewormedExpirationDate,
+      antiFleaExpirationDate: petSchema.antiFleaExpirationDate,
       createdAt: petSchema.createdAt,
       updatedAt: petSchema.updatedAt,
     })
