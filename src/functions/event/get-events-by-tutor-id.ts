@@ -84,7 +84,7 @@ const getEventsByTutorIdFunction = async (tutorId: string) => {
   for (const event of res) {
     if (event.entityType === 'pet') {
       const petResponse = await getPetById(event.entityId)
-      event.tooltip = petResponse.data?.[0]?.name ?? 'Unknown'
+      event.tooltip = petResponse.data?.name ?? 'Unknown'
     } else {
       event.tooltip = 'Desconhecido'
     }
