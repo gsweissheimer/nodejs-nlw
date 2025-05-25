@@ -1,6 +1,5 @@
 import {
   boolean,
-  date,
   pgTable,
   text,
   timestamp,
@@ -24,7 +23,13 @@ export const pet = pgTable('pet', {
   birthDate: timestamp('birth_date').notNull(),
   microchip: boolean('microchip').default(false).notNull(),
   isActive: boolean('is_active').default(true).notNull(),
+  isVaccinated: boolean('is_vaccinated').default(false).notNull(),
+  isCastrated: boolean('is_castrated').default(false).notNull(),
+  isFiev: boolean('is_fiev').default(false).notNull(),
+  isFelv: boolean('is_felv').default(false).notNull(),
   angel: boolean('angel').default(false).notNull(),
+  dewormedExpirationDate: timestamp('dewormed_expiration_date'),
+  antiFleaExpirationDate: timestamp('anti_flea_expiration_date'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').$onUpdate(() => new Date()),
 })
