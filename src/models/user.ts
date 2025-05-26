@@ -10,6 +10,7 @@ export interface User {
 export interface UserMin {
   id: string
   username: string
+  name: string
   tutorId: string | null
 }
 export interface UserFull {

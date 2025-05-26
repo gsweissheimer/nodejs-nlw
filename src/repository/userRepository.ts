@@ -46,6 +46,7 @@ export const GetFamilyUsersByFamilyIdRepository = async (
     .select({
       id: userRecord.id,
       username: userRecord.username,
+      name: tutor.name,
       tutorId: userRecord.tutorId,
     })
     .from(familyTutor)
@@ -64,6 +65,7 @@ export const GetFamilyUsersByFamilyIdRepository = async (
         .select({
           id: userRecord.id,
           username: userRecord.username,
+          name: tutor.name,
           tutorId: userRecord.tutorId,
         })
         .from(family)
