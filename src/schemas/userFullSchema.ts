@@ -21,6 +21,12 @@ const data = z.object({
         angel: z.boolean(),
         createdAt: z.date(),
         updatedAt: z.date().nullable().optional(),
+        isVaccinated: z.boolean().optional(),
+        isCastrated: z.boolean().optional(),
+        isFiev: z.boolean().optional(),
+        isFelv: z.boolean().optional(),
+        dewormedExpirationDate: z.date().nullable().optional(),
+        antiFleaExpirationDate: z.date().nullable().optional(),
       })
     )
     .optional(),
@@ -49,6 +55,12 @@ const data = z.object({
                 angel: z.boolean(),
                 createdAt: z.date(),
                 updatedAt: z.date().nullable().optional(),
+                isVaccinated: z.boolean().optional(),
+                isCastrated: z.boolean().optional(),
+                isFiev: z.boolean().optional(),
+                isFelv: z.boolean().optional(),
+                dewormedExpirationDate: z.date().nullable().optional(),
+                antiFleaExpirationDate: z.date().nullable().optional(),
               })
             )
             .optional(),

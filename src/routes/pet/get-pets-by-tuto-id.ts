@@ -5,17 +5,23 @@ import type { Pet } from '../../models'
 import type { Response } from '../../models'
 
 const data = z.object({
-    id: z.string().optional(),
-    name: z.string(),
-    type: z.string(),
-    breedId: z.string(),
-    tutorId: z.string(),
-    birthDate: z.date(),
-    microchip: z.boolean(),
-    isActive: z.boolean(),
-    angel: z.boolean(),
-    createdAt: z.date(),
-    updatedAt: z.date().nullable().optional(),
+  id: z.string().optional(),
+  name: z.string(),
+  type: z.string(),
+  breedId: z.string(),
+  tutorId: z.string(),
+  birthDate: z.date(),
+  microchip: z.boolean(),
+  isActive: z.boolean(),
+  angel: z.boolean(),
+  createdAt: z.date(),
+  updatedAt: z.date().nullable().optional(),
+  isVaccinated: z.boolean().optional(),
+  isCastrated: z.boolean().optional(),
+  isFiev: z.boolean().optional(),
+  isFelv: z.boolean().optional(),
+  dewormedExpirationDate: z.date().nullable().optional(),
+  antiFleaExpirationDate: z.date().nullable().optional(),
 })
 
 const response = z.object({
