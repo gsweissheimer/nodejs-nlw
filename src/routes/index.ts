@@ -32,6 +32,8 @@ import { addLead } from './lead/create-lead'
 import { deleteLead } from './lead/delete-lead'
 import { getAllLeads } from './lead/get-lead'
 
+import { getActions } from './action/get-actions'
+
 const publicRoutes = [
   subscribeToEventRoute,
   addLead,
@@ -47,6 +49,7 @@ const publicRoutes = [
 
 const authRoutes = [
   getAllLeads,
+  getActions,
   deleteLead,
   createPet,
   deletePet,
