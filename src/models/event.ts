@@ -3,7 +3,13 @@ import z from "zod"
 
 export const mySchema = pgSchema('my_schema')
 
-export const EventTypeEnum = z.enum(['event', 'appointment', 'notification'])
+export const EventTypeEnum = z.enum([
+  'event',
+  'appointment',
+  'notification',
+  'consultation',
+  'examination',
+])
 export const EntityTypeEnum = z.enum(['pet', 'tutor', 'family'])
 
 export type EntityType = z.infer<typeof EntityTypeEnum>

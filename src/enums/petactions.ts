@@ -10,6 +10,8 @@ export enum EventActionType {
   COCO_SANGUE = 'coco-sangue',
   AMOADO = 'amoado',
   MEDICACAO = 'medicacao',
+  EXAME = 'exame',
+  CONSULTA = 'consulta',
 }
 
 export enum EventActionLabel {
@@ -24,6 +26,8 @@ export enum EventActionLabel {
   COCO_SANGUE = 'Cocô com Sangue',
   AMOADO = 'Amoado',
   MEDICACAO = 'Medicação',
+  EXAME = 'Exame',
+  CONSULTA = 'Consulta',
 }
 
 export interface EventAction {
@@ -97,6 +101,18 @@ export const EventActions: EventAction[] = [
   {
     label: EventActionLabel.MEDICACAO,
     value: EventActionType.MEDICACAO,
+    entity: 'notification',
+    type: 'notification',
+  },
+  {
+    label: EventActionLabel.CONSULTA,
+    value: EventActionType.CONSULTA,
+    entity: 'notification',
+    type: 'notification',
+  },
+  {
+    label: EventActionLabel.EXAME,
+    value: EventActionType.EXAME,
     entity: 'notification',
     type: 'notification',
   },

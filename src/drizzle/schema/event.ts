@@ -6,6 +6,8 @@ export const event_types = mySchema.enum('event_types', [
   'event',
   'appointment',
   'notification',
+  'consultation',
+  'examination',
 ])
 
 export const entity_types = mySchema.enum('entity_types', [
