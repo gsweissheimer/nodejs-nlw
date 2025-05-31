@@ -14,6 +14,7 @@ export interface Event {
   name: string
   value: string
   tooltip?: string
+  status?: string
   type: EventType
   entityId: string
   entityType: EntityType

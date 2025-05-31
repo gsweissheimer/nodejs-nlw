@@ -7,6 +7,7 @@ const data = z.array(
       id: z.string().optional(),
       name: z.string(),
       tooltip: z.string().optional(),
+      status: z.string(),
       entityId: z.string(),
       entityType: z.string(),
       eventDate: z.date(),
