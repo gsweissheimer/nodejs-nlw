@@ -9,6 +9,7 @@ export enum EventActionType {
   COCO_FORA = 'coco-fora',
   COCO_SANGUE = 'coco-sangue',
   AMOADO = 'amoado',
+  MEDICACAO = 'medicacao',
 }
 
 export enum EventActionLabel {
@@ -22,63 +23,81 @@ export enum EventActionLabel {
   COCO_FORA = 'Cocô Fora',
   COCO_SANGUE = 'Cocô com Sangue',
   AMOADO = 'Amoado',
+  MEDICACAO = 'Medicação',
 }
 
 export interface EventAction {
   label: string
   value: EventActionType
   entity: string
+  type: string
 }
 
 export const EventActions: EventAction[] = [
   {
     label: EventActionLabel.AGRESSIVO,
     value: EventActionType.AGRESSIVO,
-    entity: 'all',
+    entity: 'pet',
+    type: 'event',
   },
   {
     label: EventActionLabel.VOMITOU,
     value: EventActionType.VOMITOU,
     entity: 'all',
+    type: 'event',
   },
   {
     label: EventActionLabel.NAO_QUIS_COMER,
     value: EventActionType.NAO_QUIS_COMER,
-    entity: 'all',
+    entity: 'pet',
+    type: 'event',
   },
   {
     label: EventActionLabel.MIANDO_MUITO,
     value: EventActionType.MIANDO_MUITO,
-    entity: 'all',
+    entity: 'pet',
+    type: 'event',
   },
   {
     label: EventActionLabel.AGITADO,
     value: EventActionType.AGITADO,
-    entity: 'all',
+    entity: 'pet',
+    type: 'event',
   },
   {
     label: EventActionLabel.BOLA_DE_PELOS,
     value: EventActionType.BOLA_DE_PELOS,
     entity: 'all',
+    type: 'event',
   },
   {
     label: EventActionLabel.MIJOU_FORA,
     value: EventActionType.MIJOU_FORA,
     entity: 'all',
+    type: 'event',
   },
   {
     label: EventActionLabel.COCO_FORA,
     value: EventActionType.COCO_FORA,
     entity: 'all',
+    type: 'event',
   },
   {
     label: EventActionLabel.COCO_SANGUE,
     value: EventActionType.COCO_SANGUE,
     entity: 'all',
+    type: 'event',
   },
   {
     label: EventActionLabel.AMOADO,
     value: EventActionType.AMOADO,
-    entity: 'all',
+    entity: 'pet',
+    type: 'event',
+  },
+  {
+    label: EventActionLabel.MEDICACAO,
+    value: EventActionType.MEDICACAO,
+    entity: 'notification',
+    type: 'notification',
   },
 ]

@@ -32,6 +32,8 @@ import { createLead } from './lead/create-lead'
 import { deleteLeadById } from './lead/delete-lead'
 import { getLeads } from './lead/get-lead'
 
+import { inactiveEvent } from './event/inactive-event'
+
 export {
   accessInviteLinks,
   subscribeToEvent,
@@ -59,4 +61,5 @@ export {
   createLead,
   deleteLeadById,
   getLeads,
+  inactiveEvent
 }

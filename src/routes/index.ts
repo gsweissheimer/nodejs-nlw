@@ -27,6 +27,7 @@ import { createEvent } from './event/create-event'
 import { deleteEvent } from './event/delete-event'
 import { getEventsByTutorId } from './event/get-event'
 import { getEventsByPetId } from './event/get-event'
+import { inactiveEventById } from './event/inactive-event-by-id'
 
 import { addLead } from './lead/create-lead'
 import { deleteLead } from './lead/delete-lead'
@@ -54,6 +55,7 @@ const authRoutes = [
   createPet,
   deletePet,
   updatePet,
+  inactiveEventById,
   getPetsByTutorId,
   getUserFullBFF,
   createEvent,

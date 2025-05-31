@@ -4,6 +4,7 @@ import {
   getEventsByTutorIdRepository,
   getFamilyEventsByFamilyIdRepository,
   getTutorFamilyEventsByFamilyIdRepository,
+  inactiveEventsByIdRepository,
 } from './eventRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
 import {
@@ -50,4 +51,5 @@ export {
   createLeadRepository,
   getLeads,
   deleteLeadByIdRepository,
+  inactiveEventsByIdRepository,
 }

@@ -5,6 +5,7 @@ export const mySchema = pgSchema('my_schema')
 export const event_types = mySchema.enum('event_types', [
   'event',
   'appointment',
+  'notification',
 ])
 
 export const entity_types = mySchema.enum('entity_types', [
@@ -18,6 +19,7 @@ export const event = pgTable('event', {
   name: text('name').notNull(),
   value: text('value').notNull(),
   type: event_types('type').notNull(),
+  status: text('status').notNull().default('active'),
   entityId: uuid('entity_id').notNull(),
   entityType: entity_types('entity_type').notNull(),
   eventDate: timestamp('event_date').notNull().defaultNow(),

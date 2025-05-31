@@ -22,6 +22,17 @@ export const createEventRepository = async (
   return insertedEvent[0].id
 }
 
+export const inactiveEventsByIdRepository = async (
+  id: string
+): Promise<boolean> => {
+  const updatedEvent = await db
+    .update(eventSchema)
+    .set({ status: 'inactive' })
+    .where(eq(eventSchema.id, id))
+
+  return updatedEvent.count > 0
+}
+
 export const deleteEventByIdRepository = async (id: string): Promise<boolean> => {
   await db.delete(eventSchema).where(eq(eventSchema.id, id))
 

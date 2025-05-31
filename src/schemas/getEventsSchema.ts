@@ -6,7 +6,8 @@ const data = z.array(
   z.object({
     label: z.nativeEnum(EventActionLabel),
     value: z.nativeEnum(EventActionType),
-    entity: z.string()
+    entity: z.string(),
+    type: z.string()
   })
 );
 
