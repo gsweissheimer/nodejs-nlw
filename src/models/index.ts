@@ -4,6 +4,7 @@ import { Lead } from './lead'
 import { Pet } from './pet'
 import { Tutor } from './tutor'
 import { User, UserFull } from './user'
+import { HistoryItem } from './history'
 export {
   Tutor,
   User,
@@ -17,6 +18,7 @@ export {
   EntityType,
   EventTypeEnum,
   EntityTypeEnum,
+  HistoryItem,
 }
 export interface Response<T = unknown> {
     hasError: boolean

@@ -19,6 +19,14 @@ const data = z.object({
   isFelv: z.boolean().optional(),
   dewormedExpirationDate: z.date().nullable().optional(),
   antiFleaExpirationDate: z.date().nullable().optional(),
+  history: z.array(
+    z.object({
+      eventDate: z.date(),
+      eventType: z.string(),
+      eventTypeLabel: z.string(),
+      name: z.string(),
+    })
+  ).optional(),
 })
 
 export const getPetSchema = {

@@ -1,4 +1,4 @@
-import type { Event } from '../models/'
+import type { Event, HistoryItem } from '../models/'
 export interface Pet extends PetEvent, PetUX {
   id?: string
   name: string
@@ -18,6 +18,7 @@ export interface Pet extends PetEvent, PetUX {
   angel: boolean
   createdAt: Date
   updatedAt?: Date | null
+  history?: HistoryItem[]
 }
 
 export interface PetEvent {

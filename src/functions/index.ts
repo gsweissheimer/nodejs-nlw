@@ -9,6 +9,8 @@ import { generateToken, verifyUserNameAndPassword } from './auth/login'
 
 import { getFamilyByTutorId } from './family/get-family-by-tutor-id'
 
+import { getHistoriesByPetId } from './history/get-histories-by-pet-id'
+
 import { createTutor } from './tutor/create-tutor'
 
 import { createUser } from './user/create-user'
@@ -55,6 +57,7 @@ export {
   deleteEventById,
   getEventsByTutorId,
   getFamilyByTutorId,
+  getHistoriesByPetId,
   getPetById,
   updatePetById,
   getPetsByFamilyId,
