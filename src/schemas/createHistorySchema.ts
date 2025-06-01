@@ -10,7 +10,7 @@ export const createHistorySchema = {
   description: 'Route to create pet history.',
   tags: ['history'],
   body: z.object({
-    eventDate: z.string().date(),
+    eventDate: z.string(),
     petId: z.string(),
     eventType: z.enum([
       'feature_doctor',

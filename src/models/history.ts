@@ -6,7 +6,7 @@ export interface History {
 
 export type HistoryItem = {
   eventDate: Date | string;
-  petId: string;
+  petId?: string;
   eventType: string;
   eventTypeLabel: string;
   name: string;

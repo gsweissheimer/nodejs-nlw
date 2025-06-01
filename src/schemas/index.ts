@@ -1,5 +1,5 @@
 export * from './addEventIdSchema'
-export * from './createLeadSchema'
+export * from './createHistorySchema'
 export * from './deleteLeadSchema'
 export * from './deletePetSchema'
 export * from './getEventsListEventsSchema'
