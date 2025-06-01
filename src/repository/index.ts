@@ -6,7 +6,7 @@ import {
   getTutorFamilyEventsByFamilyIdRepository,
   inactiveEventsByIdRepository,
 } from './eventRepository'
-import { GetHistoriesByPetIdRepository } from './historyRepository'
+import { GetHistoriesByPetIdRepository, CreateHistoryRepository } from './historyRepository'
 import { getFamilyByTutorIdRepository } from './familyRepository'
 import {
   createLeadRepository,
@@ -51,6 +51,7 @@ export {
   updatePetByIdRepository,
   GetHistoriesByPetIdRepository,
   createLeadRepository,
+  CreateHistoryRepository,
   getLeads,
   deleteLeadByIdRepository,
   inactiveEventsByIdRepository,

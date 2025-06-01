@@ -9,3 +9,15 @@ export const GetHistoriesByPetIdRepository = async (
   const petHistoryItens: HistoryItem[] = await db.select().from(petHistory).where(eq(petHistory.petId, id))
   return petHistoryItens;
 }
+
+export const CreateHistoryRepository = async (petHistoryItem: HistoryItem): Promise<HistoryItem> => {
+  const [created] = await db.insert(petHistory).values({
+    petId: petHistoryItem.petId,
+    eventDate: petHistoryItem.eventDate instanceof Date ? petHistoryItem.eventDate : new Date(petHistoryItem.eventDate), 
+    eventType: petHistoryItem.eventType as typeof petHistory.$inferInsert['eventType'],
+    eventTypeLabel: petHistoryItem.eventTypeLabel,
+    name: petHistoryItem.name,
+    createdAt: new Date(),
+  }).returning();
+  return created;
+}

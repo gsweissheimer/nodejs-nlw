@@ -10,6 +10,7 @@ import { generateToken, verifyUserNameAndPassword } from './auth/login'
 import { getFamilyByTutorId } from './family/get-family-by-tutor-id'
 
 import { getHistoriesByPetId } from './history/get-histories-by-pet-id'
+import { createHistory } from './history/create-history'
 
 import { createTutor } from './tutor/create-tutor'
 
@@ -64,5 +65,6 @@ export {
   createLead,
   deleteLeadById,
   getLeads,
+  createHistory,
   inactiveEvent
 }
