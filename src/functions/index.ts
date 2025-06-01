@@ -11,6 +11,7 @@ import { getFamilyByTutorId } from './family/get-family-by-tutor-id'
 
 import { getHistoriesByPetId } from './history/get-histories-by-pet-id'
 import { createHistory } from './history/create-history'
+import { deleteHistoryItemById } from './history/delete-history-item'
 
 import { createTutor } from './tutor/create-tutor'
 
@@ -66,5 +67,6 @@ export {
   deleteLeadById,
   getLeads,
   createHistory,
-  inactiveEvent
+  inactiveEvent,
+  deleteHistoryItemById,
 }

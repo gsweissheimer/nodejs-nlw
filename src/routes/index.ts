@@ -20,6 +20,7 @@ import { updatePet } from './pet/update-pet'
 import { sendMessageToAI } from './ai/send-message-route'
 
 import { createHistoryForPet } from './history/create-history-for-pet'
+import { deleteHistoryItem } from './history/delete-history-item'
 
 import { getUserFullBFF } from './user/get-user-full'
 
@@ -64,6 +65,7 @@ const authRoutes = [
   createEvent,
   deleteEvent,
   getPetById,
+  deleteHistoryItem,
   getEventsByTutorId,
   getEventsByPetId,
 ]
