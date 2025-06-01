@@ -21,6 +21,7 @@ const data = z.object({
   antiFleaExpirationDate: z.date().nullable().optional(),
   history: z.array(
     z.object({
+      id: z.string(),
       eventDate: z.date(),
       eventType: z.string(),
       eventTypeLabel: z.string(),

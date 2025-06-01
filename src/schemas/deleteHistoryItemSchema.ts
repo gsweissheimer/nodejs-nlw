@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { responseSchema } from './responseSchema'
 
 const data = z.object({
-  id: z.boolean(),
+  id: z.string(),
 })
 
 export const deleteHistoryItemSchema = {
